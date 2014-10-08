@@ -1,6 +1,8 @@
 #include "MenuPlay.hpp"
 #include "../egn/Keyboard.hpp"
 #include "../egn/FontManager.hpp"
+#include "../GameState.hpp"
+
 gui::MenuPlay::MenuPlay()
 {
     //ctor
@@ -21,6 +23,25 @@ void gui::MenuPlay::update()
     {
         updateCursor (1);
         egn::Keyboard::setActive("down", false);
+    }
+    if ( egn::Keyboard::isActive("return"))
+    {
+        switch (m_Cursor)
+        {
+            case 0:
+            break;
+
+            case 1:
+            break;
+
+            case 2:
+            break;
+
+            case 3:
+            GameState::set( GS_MENU_START );
+            break;
+        }
+        egn::Keyboard::setActive( "return", false );
     }
 }
 void gui::MenuPlay::draw(egn::Window& window)
