@@ -7,6 +7,7 @@
 #include "egn/LogManager.hpp"
 
 #include "gui/MenuStart.hpp"
+#include "gui/MenuPlay.hpp"
 
 #include "GameState.hpp"
 
@@ -39,6 +40,7 @@ MainGame::~MainGame()
 void MainGame::loop()
 {
     m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
+    m_GuiMgr.add( new gui::MenuPlay(), "menu_play");
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();
@@ -62,7 +64,9 @@ void MainGame::loop()
             break;
 
             case GS_MENU_PLAY:
+            m_GuiMgr.update( "menu_play" );
             m_Window.clear( egn::Color::Black );
+            m_GuiMgr.draw( "menu_play", m_Window );
             break;
 
             case GS_MENU_OPTION:
