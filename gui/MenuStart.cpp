@@ -3,6 +3,8 @@
 #include "../egn/FontManager.hpp"
 #include "../egn/Keyboard.hpp"
 
+#include "../GameState.hpp"
+
 
 gui::MenuStart::MenuStart()
 {
@@ -26,6 +28,33 @@ void gui::MenuStart::update()
         updateCursor(1);
         egn::Keyboard::setActive("down", false);
     }
+
+    if( egn::Keyboard::isActive( "return" ) )
+    {
+        switch( m_Cursor )
+        {
+            case 0:
+            break;
+
+            case 1:
+            break;
+
+            case 2:
+            break;
+
+            case 3:
+            break;
+
+            case 4:
+            break;
+
+            case 5:
+            GameState::set( GS_EXIT );
+            break;
+        }
+
+        egn::Keyboard::setActive( "return", false );
+    } 
 }
 
 void gui::MenuStart::draw( egn::Window& window )
