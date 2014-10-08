@@ -34,6 +34,7 @@ void gui::MenuStart::update()
         switch( m_Cursor )
         {
             case 0:
+            GameState::set( GS_MENU_PLAY );
             break;
 
             case 1:
