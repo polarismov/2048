@@ -17,4 +17,5 @@ void egn::FontManager::write( egn::Window& window, const std::string& font_name,
     text.setCharacterSize( size );
     text.setColor( color );
     window.getRenderWindow().draw( text );
+    
 }

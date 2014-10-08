@@ -30,8 +30,9 @@ void gui::MenuStart::update()
 
 void gui::MenuStart::draw( egn::Window& window )
 {
+    
     egn::FontManager::get()->write( window, "shoes", "2048", egn::Vector2f( 800/2-60, 50 ), 50, egn::Color::Red );
-
+    
     if( m_Cursor == 0 )
         egn::FontManager::get()->write( window, "shoes", "Jouer", egn::Vector2f( 50, 150 ), 30, egn::Color::Yellow );
     else
@@ -61,6 +62,7 @@ void gui::MenuStart::draw( egn::Window& window )
         egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 50, 350 ), 30, egn::Color::Yellow );
     else
         egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 50, 350 ), 30, egn::Color::White );
+    
 }
 
 void gui::MenuStart::updateCursor( int value )

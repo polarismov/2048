@@ -8,6 +8,8 @@
 
 #include "gui/MenuStart.hpp"
 
+#include "GameState.hpp"
+
 #include <iostream>
 #include <sstream>
 #include <ctime>
@@ -25,6 +27,8 @@ MainGame::MainGame()
     egn::FontManager::get()->add( "shoes", "data/font/Shoes.ttf" );
 
     srand(time(NULL));
+
+    GameState::set( GS_MENU_START );
 }
 
 MainGame::~MainGame()
@@ -34,7 +38,7 @@ MainGame::~MainGame()
 
 void MainGame::loop()
 {
-    m_GuiMgr.add( new gui::MenuStart, "menu_start" );
+    m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();
@@ -46,14 +50,29 @@ void MainGame::loop()
 
         if( egn::Keyboard::isActive( "quit") || egn::Keyboard::isActive( "escape") )
         {
-            m_Window.close();
+            GameState::set( GS_EXIT );
         }
 
-        m_GuiMgr.update( "menu_start" );
+        switch( GameState::get() )
+        {
+            case GS_MENU_START:
+            m_GuiMgr.update( "menu_start" );
+            m_Window.clear( egn::Color::Black );
+            m_GuiMgr.draw( "menu_start", m_Window );
+            break;
 
+            case GS_MENU_PLAY:
+            m_Window.clear( egn::Color::Black );
+            break;
 
-        m_Window.clear( egn::Color::Black );
-        m_GuiMgr.draw( "menu_start", m_Window );
+            case GS_MENU_OPTION:
+            m_Window.clear( egn::Color::Black );
+            break;
+
+            case GS_EXIT:
+            m_Window.close();
+            break;
+        }
         m_Window.display();
 
         std::ostringstream oss;
