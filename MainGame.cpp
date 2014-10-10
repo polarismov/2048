@@ -34,8 +34,6 @@ MainGame::MainGame()
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
-
-    m_Grid.setSize( 20 );
 }
 
 MainGame::~MainGame()
@@ -75,6 +73,24 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_play" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_play", m_Window );
+            break;
+
+            case GS_SET_EASY_PLAY:
+            m_Grid.setSize( 6 );
+            m_Grid.popNumber( 2 );
+            GameState::set( GS_PLAY );
+            break;
+
+            case GS_SET_MEDIUM_PLAY:
+            m_Grid.setSize( 4 );
+            m_Grid.popNumber( 2 );
+            GameState::set( GS_PLAY );
+            break;
+
+            case GS_SET_HARD_PLAY:
+            m_Grid.setSize( 3 );
+            m_Grid.popNumber( 2 );
+            GameState::set( GS_PLAY );
             break;
 
             case GS_PLAY:

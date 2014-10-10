@@ -4,6 +4,8 @@
 
 #include "../egn/Window.hpp"
 
+#include "Number.hpp"
+
 
 namespace grid 
 {
@@ -23,7 +25,7 @@ namespace grid
 		void setSize( int size );
 
 
-		void popNumber();
+		void popNumber( int n );
 
 
 		void generateAllNumber();
@@ -31,7 +33,7 @@ namespace grid
 	private:
 		egn::Sprite m_BlankScare;
 
-		std::vector<std::vector<int> > m_Grid;
+		std::vector<std::vector<grid::Number> > m_Grid;
 
 		int m_Size;
 
