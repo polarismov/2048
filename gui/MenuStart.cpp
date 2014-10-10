@@ -52,6 +52,7 @@ void gui::MenuStart::update()
             break;
 
             case 4:
+            GameState::set( GS_MENU_OPTION);
             break;
 
             case 5:
