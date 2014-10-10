@@ -120,7 +120,12 @@ void egn::AudioManager::setVolumeSound(int volume)
 }
 
 
-/*void egn::AudioManager::getVolumeMusic() const
+int egn::AudioManager::getVolumeMusic() const
 {
+    return m_VolumeMusic;
+}
 
-}*/
+int egn::AudioManager::getVolumeSound() const 
+{
+    return m_VolumeSound;
+}
