@@ -8,7 +8,7 @@
 
 #include "gui/MenuStart.hpp"
 #include "gui/MenuPlay.hpp"
-
+#include "gui/MenuOption.hpp"
 
 #include "GameState.hpp"
 
@@ -30,7 +30,7 @@ MainGame::MainGame()
 
     srand(time(NULL));
 
-    GameState::set( GS_PLAY );
+    GameState::set( GS_MENU_START );
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
@@ -46,7 +46,8 @@ MainGame::~MainGame()
 void MainGame::loop()
 {
     m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
-    m_GuiMgr.add( new gui::MenuPlay(), "menu_play");
+    m_GuiMgr.add( new gui::MenuPlay(), "menu_play" );
+    m_GuiMgr.add( new gui::MenuOption(), "menu_option" );
 
     while( m_Window.isOpen() )
     {
@@ -82,7 +83,9 @@ void MainGame::loop()
             break;
 
             case GS_MENU_OPTION:
+            m_GuiMgr.update( "menu_option" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw ( "menu_option", m_Window );
             break;
 
             case GS_EXIT:
