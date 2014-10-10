@@ -49,7 +49,7 @@ void gui::MenuPlay::update()
 void gui::MenuPlay::draw(egn::Window& window)
 {
     
-    egn::FontManager::get()->write(window, "shoes","Difficulte",egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Red);
+    egn::FontManager::get()->write(window, "shoes","Difficulte",egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
     /*facile*/
     m_Button[0].setPosition( egn::Vector2f( 250, 150 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 150 ) );
@@ -62,7 +62,7 @@ void gui::MenuPlay::draw(egn::Window& window)
         window.draw( m_Button[0] );
     }
     egn::FontManager::get()->write(window, "shoes","Facile      6X6",egn::Vector2f(285, 150 ), 30, egn::Color::Black);
-        /*end facile*/
+    /*end facile*/
 
     /*normal*/
     m_Button[0].setPosition( egn::Vector2f( 250, 220 ) );
@@ -75,14 +75,12 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    if ( m_Cursor == 1 )
-
-        egn::FontManager::get()->write(window, "shoes","Normal     4X4",egn::Vector2f(285, 220 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Normal     4X4",egn::Vector2f(285, 220 ), 30, egn::Color::Black);
     /*end normal*/
 
     /*extreme*/
-    m_Button[0].setPosition( egn::Vector2f( 250, 220 ) );
-    m_Button[1].setPosition( egn::Vector2f( 250, 220 ) );
+    m_Button[0].setPosition( egn::Vector2f( 250, 290 ) );
+    m_Button[1].setPosition( egn::Vector2f( 250, 290 ) );
     if( m_Cursor == 2 )
     {
         window.draw( m_Button[1] );
@@ -91,13 +89,23 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    if ( m_Cursor == 2 )
-        egn::FontManager::get()->write(window, "shoes","Extreme    3X3",egn::Vector2f(50, 200 ), 30, egn::Color::Yellow);
-    /*end extrem*/
-    if ( m_Cursor == 3 )
-        egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f(50, 240 ), 30, egn::Color::Yellow);
-    else
-        egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f(50, 240 ), 30, egn::Color::White);
+    egn::FontManager::get()->write(window, "shoes","Extreme    3X3",egn::Vector2f(285, 290 ), 30, egn::Color::Black);
+    /*end extreme*/
+       
+    /*retour*/
+    m_Button[0].setPosition( egn::Vector2f( 250, 360 ) );
+    m_Button[1].setPosition( egn::Vector2f( 250, 360 ) );
+    if( m_Cursor == 3 )
+    {
+        window.draw( m_Button[1] );
+    }
+    else 
+    {
+        window.draw( m_Button[0] );
+    }
+    
+    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f(345, 360 ), 30, egn::Color::Black);
+    /*end retour*/
 }
 
 void gui::MenuPlay::updateCursor(int value)
