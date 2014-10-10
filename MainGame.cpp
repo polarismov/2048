@@ -98,6 +98,7 @@ void MainGame::loop()
             break;
 
             case GS_PLAY:
+            m_Grid.update();
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_Grid.draw( m_Window );
             break;

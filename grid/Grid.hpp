@@ -2,9 +2,14 @@
 #define GRID_HPP
 
 
+#include <list>
+
 #include "../egn/Window.hpp"
 
 #include "Number.hpp"
+
+
+#include "../Common.hpp"
 
 
 namespace grid 
@@ -30,14 +35,20 @@ namespace grid
 
 		void generateAllNumber();
 
+
+		void move( DIR direction );
+
 	private:
 		egn::Sprite m_BlankScare;
 
 		std::vector<std::vector<grid::Number> > m_Grid;
+		std::vector<grid::Number> m_MoveNumber;
 
 		int m_Size;
 
 		egn::Vector2f m_BasePosition;
+
+		bool m_InMove;
 	};
 }
 
