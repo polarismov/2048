@@ -21,6 +21,7 @@ class MenuStart : public GuiBase
         void updateCursor( int value );
     private:
         int m_Cursor;
+        egn::Sprite m_Button[2];
 };
 
 } // namespace gui
