@@ -12,6 +12,8 @@ namespace egn {
 class AudioManager : public Singleton<AudioManager>
 {
     public:
+        AudioManager();
+
         /* music */
         void playMusic( const std::string& path );
         void stopMusic();
@@ -28,8 +30,6 @@ class AudioManager : public Singleton<AudioManager>
         int getVolumeSound() const;
     protected:
     private:
-        AudioManager();
-
         std::string m_CurrentMusic;
         sf::Music m_Music;
 

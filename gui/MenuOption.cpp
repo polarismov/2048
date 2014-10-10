@@ -1,8 +1,14 @@
 #include "MenuOption.hpp"
+
+#include <iostream>
+#include <sstream>
+
 #include "../egn/Keyboard.hpp"
 #include "../egn/FontManager.hpp"
-#include "../GameState.hpp"
 #include "../egn/TextureManager.hpp"
+#include "../egn/AudioManager.hpp"
+
+#include "../GameState.hpp"
 gui::MenuOption::MenuOption()
 {
     m_Cursor=0;
@@ -59,11 +65,14 @@ void gui::MenuOption::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    
-        egn::FontManager::get()->write(window, "shoes","Sound <-  ->",egn::Vector2f( 345, 158 ), 30, egn::Color::Black);
+    std::ostringstream oss;
+    oss << egn::AudioManager::get()->getVolumeSound();
+    std::string valsound = "< "+oss.str()+" >";
+    egn::FontManager::get()->write(window, "shoes","Sound ",egn::Vector2f( 345-30, 158 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "olympic", valsound, egn::Vector2f( 440, 158 ), 30, egn::Color::Black);
     /*end sound*/
 
-    /*touche*/
+    /*musique*/
     m_Button[0].setPosition( egn::Vector2f( 250, 220 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 220 ) );
     if( m_Cursor == 1 )
@@ -74,10 +83,13 @@ void gui::MenuOption::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    
-        egn::FontManager::get()->write(window, "shoes","Musique <-  ->",egn::Vector2f( 335, 228 ), 30, egn::Color::Black);
+    std::ostringstream oss1;
+    oss1 << egn::AudioManager::get()->getVolumeMusic();
+    std::string valmusic = "< "+oss1.str()+" >";
+    egn::FontManager::get()->write(window, "shoes","Music",egn::Vector2f( 345-30, 228 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "olympic", valmusic,egn::Vector2f( 440, 228 ), 30, egn::Color::Black);
 
-    /*end touche*/
+    /*end musique*/
 
     /*retour*/
     m_Button[0].setPosition( egn::Vector2f( 250, 290 ) );
@@ -90,7 +102,7 @@ void gui::MenuOption::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-        egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f( 340, 298 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f( 340, 298 ), 30, egn::Color::Black);
   /*end retour*/
 
 }

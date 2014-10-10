@@ -5,6 +5,7 @@
 #include "egn/GameTime.hpp"
 #include "egn/FontManager.hpp"
 #include "egn/LogManager.hpp"
+#include "egn/AudioManager.hpp"
 
 #include "gui/MenuStart.hpp"
 #include "gui/MenuPlay.hpp"
@@ -25,8 +26,11 @@ MainGame::MainGame()
     egn::Keyboard::init();
     egn::TextureManager::init();
     egn::FontManager::init();
+    egn::AudioManager::init();
 
     egn::FontManager::get()->add( "shoes", "data/font/Shoes.ttf" );
+    egn::FontManager::get()->add( "olympic", "data/font/Olympic.ttf");
+
 
     srand(time(NULL));
 
@@ -104,4 +108,5 @@ void MainGame::loop()
     egn::TextureManager::kill();
     egn::FontManager::kill();
     egn::LogManager::kill();
+    egn::AudioManager::kill();
 }
