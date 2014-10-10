@@ -5,7 +5,7 @@
 
 gui::MenuPlay::MenuPlay()
 {
-    //ctor
+    m_Cursor=0;
 }
 
 gui::MenuPlay::~MenuPlay()
