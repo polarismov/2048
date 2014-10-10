@@ -43,7 +43,7 @@ void grid::Grid::popNumber( int n )
 		if( m_Grid[y][x].get() == 0 )
 		{
 			int percent = egn::GameTime::getRandomInt( 0, 101 );
-			if( percent < 85 )
+			if( percent < 95 )
 			{
 				m_Grid[y][x].set( 2 );
 			}
