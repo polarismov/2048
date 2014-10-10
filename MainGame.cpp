@@ -60,18 +60,18 @@ void MainGame::loop()
         {
             case GS_MENU_START:
             m_GuiMgr.update( "menu_start" );
-            m_Window.clear( egn::Color::Black );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_start", m_Window );
             break;
 
             case GS_MENU_PLAY:
             m_GuiMgr.update( "menu_play" );
-            m_Window.clear( egn::Color::Black );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_play", m_Window );
             break;
 
             case GS_MENU_OPTION:
-            m_Window.clear( egn::Color::Black );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
             break;
 
             case GS_EXIT:
