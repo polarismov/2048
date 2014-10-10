@@ -31,12 +31,15 @@ void gui::MenuPlay::update()
         switch (m_Cursor)
         {
             case 0:
+            GameState::set( GS_SET_EASY_PLAY );
             break;
 
             case 1:
+            GameState::set( GS_SET_MEDIUM_PLAY );
             break;
 
             case 2:
+            GameState::set( GS_SET_HARD_PLAY );
             break;
 
             case 3:
