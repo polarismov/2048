@@ -36,6 +36,7 @@ public:
     bool isOpen();
 
     void draw( egn::Sprite& sprite );
+    void drawRect( egn::FloatRect floatRect, egn::Color color );
 
     void setCamera( egn::Camera& camera );
     egn::Camera& getCamera();

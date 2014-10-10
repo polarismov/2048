@@ -1,10 +1,9 @@
 #ifndef MAINGAME_HPP
 #define MAINGAME_HPP
 
-
-#include "egn/Window.hpp"
-
 #include "gui/GuiManager.hpp"
+
+#include "grid/Grid.hpp"
 
 class MainGame
 {
@@ -17,6 +16,7 @@ protected:
 private:
     egn::Window m_Window;
     gui::GuiManager m_GuiMgr;
+    grid::Grid m_Grid;
 
 };
 

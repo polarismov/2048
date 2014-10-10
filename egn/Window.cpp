@@ -59,6 +59,14 @@ void egn::Window::draw( egn::Sprite& sprite )
     m_RenderWindow.draw( sprite.get() );
 }
 
+void egn::Window::drawRect( egn::FloatRect rect, egn::Color color )
+{
+    sf::RectangleShape sh = sf::RectangleShape( egn::Vector2f( rect.width, rect.height ) );
+    sh.setPosition( rect.left, rect.top );
+    sh.setFillColor( color );
+    m_RenderWindow.draw( sh );
+}
+
 void egn::Window::setCamera( egn::Camera& camera )
 {
     m_Camera.copy( camera );

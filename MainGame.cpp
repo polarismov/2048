@@ -9,6 +9,7 @@
 #include "gui/MenuStart.hpp"
 #include "gui/MenuPlay.hpp"
 
+
 #include "GameState.hpp"
 
 #include <iostream>
@@ -29,10 +30,12 @@ MainGame::MainGame()
 
     srand(time(NULL));
 
-    GameState::set( GS_MENU_START );
+    GameState::set( GS_PLAY );
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
+
+    m_Grid.setSize( 20 );
 }
 
 MainGame::~MainGame()
@@ -71,6 +74,11 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_play" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_play", m_Window );
+            break;
+
+            case GS_PLAY:
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_Grid.draw( m_Window );
             break;
 
             case GS_MENU_OPTION:
