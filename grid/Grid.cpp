@@ -1,6 +1,7 @@
 #include "Grid.hpp"
 
 #include "../egn/GameTime.hpp"
+#include "../egn/Keyboard.hpp"
 
 grid::Grid::Grid()
 {
@@ -56,6 +57,91 @@ void grid::Grid::popNumber( int n )
 	}
 }
 
+void grid::Grid::update()
+{
+	if( m_InMove == false )
+	{
+		if( egn::Keyboard::isActive("up") )
+		{
+			move(DIR_UP);
+		}
+		else if( egn::Keyboard::isActive("down") )
+		{
+			move(DIR_DOWN);
+		}
+		else if( egn::Keyboard::isActive("left") )
+		{
+			move(DIR_LEFT);
+		}
+		else if( egn::Keyboard::isActive("right") )
+		{
+			move(DIR_RIGHT);
+		}
+	}
+
+	for( int i = 0; i < m_MoveNumber.size(); i++ )
+	{
+		m_MoveNumber[i].update();
+		if( m_MoveNumber[i].inMove() == false )
+		{
+			ref ref_tmp = m_MoveNumber[i].getRef();
+			m_Grid[ref_tmp.i][ref_tmp.j].set( m_MoveNumber[i].get() );
+			m_MoveNumber.erase( m_MoveNumber.begin() + i );
+		}
+	}
+}
+
+void grid::Grid::move( DIR direction )
+{
+	switch( direction )
+	{
+		case DIR_UP:
+		for( int i = 0; i < m_Grid.size(); i++ )
+		{
+			for( int j = 0; j < m_Grid[0].size(); j++ )
+			{
+				if( m_Grid[i][j].get() != 0 )
+				{
+					bool move;
+					move = false;
+					egn::FloatRect position;
+					ref ref_tmp;
+
+					for( int k = i; k >= 0; k-- )
+					{
+						if( m_Grid[k][j].get() == 0 )
+						{
+							position = m_Grid[k][j].getPosition();
+							move = true;
+							ref_tmp.i = k;
+							ref_tmp.j = j;
+						}
+					}
+
+					if( move == true )
+					{
+						grid::Number number = grid::Number( m_Grid[i][j].get(), m_Grid[i][j].getPosition() );
+						number.setNextPosition( position );
+						m_Grid[i][j].set( 0 );
+						number.move( DIR_UP, ref_tmp );
+						m_MoveNumber.push_back( number );
+					}
+				}
+			}
+		}
+		break;
+
+		case DIR_DOWN:
+		break;
+
+		case DIR_LEFT:
+		break;
+
+		case DIR_RIGHT:
+		break;
+	}
+}
+
 void grid::Grid::draw( egn::Window& window )
 {
 	for( int i = 0; i < m_Grid.size(); i++ )
@@ -70,5 +156,10 @@ void grid::Grid::draw( egn::Window& window )
 				m_Grid[i][j].draw( window );
 			}
 		}
+	}
+
+	for( int i = 0; i < m_MoveNumber.size(); i++ )
+	{
+		m_MoveNumber[i].draw( window );
 	}
 }
