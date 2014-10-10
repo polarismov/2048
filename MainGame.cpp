@@ -30,6 +30,9 @@ MainGame::MainGame()
     srand(time(NULL));
 
     GameState::set( GS_MENU_START );
+
+    egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
+    m_Window.setCamera( camera );
 }
 
 MainGame::~MainGame()

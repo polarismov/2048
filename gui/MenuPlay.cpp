@@ -61,7 +61,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Facile      6X6",egn::Vector2f(285, 150 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Facile      6X6",egn::Vector2f(285, 158 ), 30, egn::Color::Black);
     /*end facile*/
 
     /*normal*/
@@ -75,7 +75,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Normal     4X4",egn::Vector2f(285, 220 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Normal     4X4",egn::Vector2f(285, 228 ), 30, egn::Color::Black);
     /*end normal*/
 
     /*extreme*/
@@ -89,7 +89,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Extreme    3X3",egn::Vector2f(285, 290 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Extreme    3X3",egn::Vector2f(285, 298 ), 30, egn::Color::Black);
     /*end extreme*/
        
     /*retour*/
@@ -104,7 +104,7 @@ void gui::MenuPlay::draw(egn::Window& window)
         window.draw( m_Button[0] );
     }
     
-    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f(345, 360 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f(345, 368 ), 30, egn::Color::Black);
     /*end retour*/
 }
 
