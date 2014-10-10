@@ -103,5 +103,24 @@ void egn::AudioManager::stopSound( const std::string& id )
         }
     }
 }
+void egn::AudioManager::setVolumeMusic(int volume)
+{
+    m_VolumeMusic = volume;
+    m_Music.setVolume(m_VolumeMusic);
+
+}
+void egn::AudioManager::setVolumeSound(int volume)
+{
+    m_VolumeSound = volume;
+    std::map<std::string, sf::Sound>::iterator it;
+    for( it = m_Sounds.begin(); it != m_Sounds.end(); ++it)
+    {
+        (*it).second.setVolume(volume);
+    }
+}
 
 
+/*void egn::AudioManager::getVolumeMusic() const
+{
+
+}*/

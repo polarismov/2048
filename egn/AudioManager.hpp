@@ -43,3 +43,4 @@ class AudioManager : public Singleton<AudioManager>
 } // namespace egn
 
 #endif // EGN_AUDIOMANAGER_HPP
+
