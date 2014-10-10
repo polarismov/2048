@@ -27,6 +27,16 @@ void egn::Sprite::setPosition( egn::Vector2f position )
     m_Sprite.setPosition( position.x, position.y );
 }
 
+void egn::Sprite::setScale( float x, float y )
+{
+	m_Sprite.setScale( x, y );
+}
+
+void egn::Sprite::scale( float x, float y )
+{
+	m_Sprite.scale( x, y );
+}
+
 sf::Sprite& egn::Sprite::get()
 {
     return m_Sprite;

@@ -41,6 +41,7 @@ void MainGame::loop()
 {
     m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
     m_GuiMgr.add( new gui::MenuPlay(), "menu_play");
+
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();

@@ -19,6 +19,9 @@ public:
 
     void setTexture( egn::Texture& texture );
 
+    void setScale( float x, float y );
+    void scale( float x, float y );
+
     sf::Sprite& get();
 protected:
 private:
