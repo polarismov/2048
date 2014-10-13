@@ -3,6 +3,8 @@
 #include "../egn/GameTime.hpp"
 #include "../egn/Keyboard.hpp"
 
+#include "../GameState.hpp"
+
 grid::Grid::Grid()
 {
 	m_Size = 0;
@@ -33,6 +35,25 @@ void grid::Grid::setSize( int size )
 		m_Grid.push_back( tmp );
 	}
 	
+}
+
+
+bool grid::Grid::isFull()
+{
+	bool full = true;
+	for( int i = 0; i < m_Grid.size(); i++ )
+	{
+		for( int j = 0; j < m_Grid[0].size(); j++ )
+		{
+			if( m_Grid[i][j].get() == 0 ) 
+			{
+				full = false;
+				break;
+			}
+		}
+	}
+
+	return full;
 }
 
 void grid::Grid::popNumber( int n )
@@ -105,12 +126,16 @@ void grid::Grid::update()
 	if( m_MoveNumber.size() <= 0 && m_InMove == true )
 	{
 		m_InMove = false;
-		popNumber( 1 );
+		if( !isFull() ) 
+		{
+			popNumber( 1 );
+		}
 	}
 }
 
 void grid::Grid::move( DIR direction )
 {
+	bool any_move = true;
 	m_InMove = true;
 	switch( direction )
 	{
@@ -134,6 +159,7 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = k;
 							ref_tmp.j = j;
+							any_move = false;
 						}
 						else 
 						{
@@ -184,6 +210,7 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = k;
 							ref_tmp.j = j;
+							any_move = false;
 						}
 						else 
 						{
@@ -233,6 +260,7 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = i;
 							ref_tmp.j = k;
+							any_move = false;
 						}
 						else 
 						{
@@ -282,6 +310,7 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = i;
 							ref_tmp.j = k;
+							any_move = false;
 						}
 						else 
 						{
@@ -310,6 +339,11 @@ void grid::Grid::move( DIR direction )
 			}
 		}
 		break;
+	}
+
+	if( isFull() && any_move )
+	{
+		GameState::set( GS_MENU_START );
 	}
 }
 

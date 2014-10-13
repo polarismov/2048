@@ -38,6 +38,8 @@ namespace grid
 
 		void move( DIR direction );
 
+		bool isFull();
+
 	private:
 		egn::Sprite m_BlankScare;
 
