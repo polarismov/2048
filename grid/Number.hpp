@@ -19,6 +19,7 @@ namespace grid
 		void update();
 
 		void draw( egn::Window& window );
+		void setDraw( bool value );
 
 		void setPosition( egn::FloatRect rect );
 		void setNextPosition( egn::FloatRect rect );
@@ -40,6 +41,8 @@ namespace grid
 		DIR m_Direction;
 
 		ref m_NextVectorIndex;
+
+		bool m_Draw;
 	};
 }
 
