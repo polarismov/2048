@@ -38,7 +38,11 @@ namespace grid
 
 		void move( DIR direction );
 
+		/* retourne true si la grille est remplie */
 		bool isFull();
+
+		/* retourne true si deux cases cote à cote ont la même valeur */
+		bool moveIsPossible();
 
 	private:
 		egn::Sprite m_BlankScare;

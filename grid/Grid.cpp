@@ -56,6 +56,49 @@ bool grid::Grid::isFull()
 	return full;
 }
 
+bool grid::Grid::moveIsPossible()
+{
+	bool possible = false;
+	for( int i = 0; i < m_Grid.size(); i++ )
+	{
+		for( int j = 0; j < m_Grid[0].size(); j++ )
+		{
+			if( j > 0 )
+			{
+				if( m_Grid[i][j].get() == m_Grid[i][j-1].get() )
+				{
+					possible = true;
+				}
+			}
+
+			if( j < m_Grid[0].size() - 1 )
+			{
+				if( m_Grid[i][j].get() == m_Grid[i][j+1].get() )
+				{
+					possible = true;
+				}
+			}
+
+			if( i > 0 )
+			{
+				if( m_Grid[i][j].get() == m_Grid[i-1][j].get() )
+				{
+					possible = true;
+				}
+			}
+
+			if( i < m_Grid.size() - 1 )
+			{
+				if( m_Grid[i][j].get() == m_Grid[i+1][j].get() )
+				{
+					possible = true;
+				}
+			}
+		}
+	}
+	return possible;
+}
+
 void grid::Grid::popNumber( int n )
 {
 	while( n )
@@ -136,7 +179,6 @@ void grid::Grid::update()
 
 void grid::Grid::move( DIR direction )
 {
-	bool any_move = true;
 	m_InMove = true;
 	switch( direction )
 	{
@@ -160,7 +202,6 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = k;
 							ref_tmp.j = j;
-							any_move = false;
 						}
 						else 
 						{
@@ -211,7 +252,6 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = k;
 							ref_tmp.j = j;
-							any_move = false;
 						}
 						else 
 						{
@@ -261,7 +301,6 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = i;
 							ref_tmp.j = k;
-							any_move = false;
 						}
 						else 
 						{
@@ -311,7 +350,6 @@ void grid::Grid::move( DIR direction )
 							move = true;
 							ref_tmp.i = i;
 							ref_tmp.j = k;
-							any_move = false;
 						}
 						else 
 						{
@@ -342,7 +380,7 @@ void grid::Grid::move( DIR direction )
 		break;
 	}
 
-	if( isFull() && any_move )
+	if( isFull() && !moveIsPossible() )
 	{
 		GameState::set( GS_MENU_START );
 	}
