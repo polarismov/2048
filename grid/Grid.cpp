@@ -7,6 +7,7 @@ grid::Grid::Grid()
 {
 	m_Size = 0;
 	m_BasePosition = egn::Vector2f( 200, 100 );
+	m_InMove = false;
 }
 
 grid::Grid::~Grid()
@@ -63,6 +64,7 @@ void grid::Grid::update()
 	{
 		if( egn::Keyboard::isActive("up") )
 		{
+
 			move(DIR_UP);
 		}
 		else if( egn::Keyboard::isActive("down") )
