@@ -19,6 +19,8 @@ class GuiManager
         void update( const std::string& name );
 
         void draw( const std::string& name, egn::Window& window );
+
+        gui::GuiBase* getMenu( const std::string& name );
     protected:
     private:
         std::map<std::string, gui::GuiBase*> m_Gui;

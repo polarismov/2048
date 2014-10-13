@@ -41,4 +41,9 @@ void gui::GuiManager::draw( const std::string& name, egn::Window& window )
     }
 }
 
+gui::GuiBase* gui::GuiManager::getMenu( const std::string& name )
+{
+    return m_Gui[name];
+}
+
 
