@@ -34,7 +34,17 @@ void grid::Number::draw( egn::Window& window )
 	if( m_Draw )
 	{
 		egn::Color color;
-		if( m_Value > 0 ) color = egn::Color::Yellow;
+		if( m_Value == 2 ) color = egn::Color(0xF5, 0xF6, 0xCE);
+		else if ( m_Value == 4 ) color = egn::Color(0xF2, 0xF5, 0xA9);
+		else if ( m_Value == 8 ) color = egn::Color(0xF3, 0xF7, 0x81);
+		else if ( m_Value == 16 ) color = egn::Color(0xF4, 0xFA, 0x58);
+		else if ( m_Value == 32 ) color = egn::Color(0xF7, 0xFE, 0x2E);
+		else if ( m_Value == 64 ) color = egn::Color(0xFF, 0xFF, 0x00);
+		else if ( m_Value == 128 ) color = egn::Color(0xFF, 0xBF, 0x00);
+		else if ( m_Value == 256 ) color = egn::Color(0xFF, 0x80, 0x00);
+		else if ( m_Value == 512 ) color = egn::Color(0xFF, 0x40, 0x00);
+		else if ( m_Value == 1024 ) color = egn::Color(0xFF, 0x00, 0x00);
+		else if ( m_Value == 2048 ) color = egn::Color(0xB4, 0x04, 0x04);
 		window.drawRect( m_Position, color );
 
 
