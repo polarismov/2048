@@ -175,6 +175,7 @@ void grid::Grid::update()
 			popNumber( 1 );
 		}
 	}
+	std::cerr << "score : " << m_PlayerInfo.getScore() << std::endl;
 }
 
 void grid::Grid::move( DIR direction )
@@ -222,6 +223,7 @@ void grid::Grid::move( DIR direction )
 						else if( m_Grid[ref_tmp.i][ref_tmp.j].get() == m_Grid[i][j].get() )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
+							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get());
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( DIR_UP, ref_tmp );
@@ -271,6 +273,7 @@ void grid::Grid::move( DIR direction )
 						else if( m_Grid[ref_tmp.i][ref_tmp.j].get() == m_Grid[i][j].get() )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
+							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get());
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( DIR_DOWN, ref_tmp );
@@ -320,6 +323,7 @@ void grid::Grid::move( DIR direction )
 						else if( m_Grid[ref_tmp.i][ref_tmp.j].get() == m_Grid[i][j].get() )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
+							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get());
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( DIR_LEFT, ref_tmp );
@@ -369,6 +373,7 @@ void grid::Grid::move( DIR direction )
 						else if( m_Grid[ref_tmp.i][ref_tmp.j].get() == m_Grid[i][j].get() )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
+							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get());
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( DIR_RIGHT, ref_tmp );

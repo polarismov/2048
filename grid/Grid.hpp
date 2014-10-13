@@ -7,7 +7,7 @@
 #include "../egn/Window.hpp"
 
 #include "Number.hpp"
-
+#include "PlayerInfo.hpp"
 
 #include "../Common.hpp"
 
@@ -55,6 +55,9 @@ namespace grid
 		egn::Vector2f m_BasePosition;
 
 		bool m_InMove;
+
+		grid::PlayerInfo m_PlayerInfo;
+		
 	};
 }
 
