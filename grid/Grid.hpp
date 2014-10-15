@@ -44,6 +44,8 @@ namespace grid
 		/* retourne true si deux cases cote à cote ont la même valeur */
 		bool moveIsPossible();
 
+		grid::PlayerInfo& getPlayerInfo();
+
 	private:
 		egn::Sprite m_BlankScare;
 

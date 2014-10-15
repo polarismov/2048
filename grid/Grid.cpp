@@ -412,3 +412,8 @@ void grid::Grid::draw( egn::Window& window )
 		m_MoveNumber[i].draw( window );
 	}
 }
+
+grid::PlayerInfo& grid::Grid::getPlayerInfo()
+{
+	return m_PlayerInfo;
+}
