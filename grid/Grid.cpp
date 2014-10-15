@@ -387,7 +387,7 @@ void grid::Grid::move( DIR direction )
 
 	if( isFull() && !moveIsPossible() )
 	{
-		GameState::set( GS_MENU_START );
+		GameState::set( GS_MENU_LOSE );
 	}
 }
 
