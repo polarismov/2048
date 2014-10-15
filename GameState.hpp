@@ -11,6 +11,7 @@ enum gamesate
 	GS_SET_EASY_PLAY,
 	GS_SET_MEDIUM_PLAY,
 	GS_SET_HARD_PLAY,
+	GS_MENU_WIN,
 	GS_EXIT
 } typedef GS;
 
