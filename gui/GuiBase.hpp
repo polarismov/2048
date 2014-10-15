@@ -14,6 +14,9 @@ class GuiBase
         virtual void update();
 
         virtual void draw( egn::Window& window );
+
+        virtual void set( const std::string& var, int value );
+        virtual void set( const std::string& var, std::string value );
     protected:
     private:
 };

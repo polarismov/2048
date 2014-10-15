@@ -23,3 +23,14 @@ void gui::GuiBase::draw( egn::Window& window )
 }
 
 
+void gui::GuiBase::set( const std::string& var, int value )
+{
+	//set
+}
+
+void gui::GuiBase::set( const std::string& var, std::string value )
+{
+	//set
+}
+
+

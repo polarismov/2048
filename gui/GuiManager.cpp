@@ -41,6 +41,30 @@ void gui::GuiManager::draw( const std::string& name, egn::Window& window )
     }
 }
 
+void gui::GuiManager::set( const std::string& menu, const std::string& var, int value )
+{
+    if( m_Gui.find( menu ) != m_Gui.end() )
+    {
+        m_Gui[menu]->set( var, value );
+    }
+    else 
+    {
+        std::cerr << menu << " n'existe pas" << std::endl;
+    }
+}
+
+void gui::GuiManager::set( const std::string& menu, const std::string& var, std::string value )
+{
+    if( m_Gui.find( menu ) != m_Gui.end() )
+    {
+        m_Gui[menu]->set( var, value );
+    }
+    else 
+    {
+        std::cerr << menu << " n'existe pas" << std::endl;
+    }
+}
+
 gui::GuiBase* gui::GuiManager::getMenu( const std::string& name )
 {
     return m_Gui[name];

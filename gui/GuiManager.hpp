@@ -20,6 +20,9 @@ class GuiManager
 
         void draw( const std::string& name, egn::Window& window );
 
+        void set( const std::string& menu, const std::string& var, int value );
+        void set( const std::string& menu, const std::string& var, std::string value );
+
         gui::GuiBase* getMenu( const std::string& name );
     protected:
     private:
