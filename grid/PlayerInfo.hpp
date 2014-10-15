@@ -13,6 +13,8 @@ namespace grid
 		PlayerInfo();
 		~PlayerInfo();
 
+		void update();
+
 		void setScore( int score );
 		int getScore();
 

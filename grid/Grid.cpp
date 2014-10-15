@@ -385,6 +385,8 @@ void grid::Grid::move( DIR direction )
 		break;
 	}
 
+	m_PlayerInfo.update();
+
 	if( isFull() && !moveIsPossible() )
 	{
 		GameState::set( GS_MENU_LOSE );

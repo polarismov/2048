@@ -14,6 +14,11 @@ grid::PlayerInfo::~PlayerInfo()
 	//dtor
 }
 
+void grid::PlayerInfo::update()
+{
+	time(&m_CurrentTime);
+}
+
 void grid::PlayerInfo::setScore( int score)
 {
 	m_Score = score;
