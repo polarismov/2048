@@ -2,6 +2,7 @@
 
 #include "../egn/GameTime.hpp"
 #include "../egn/Keyboard.hpp"
+#include "../egn/FontManager.hpp"
 
 #include "../GameState.hpp"
 
@@ -393,6 +394,7 @@ void grid::Grid::move( DIR direction )
 
 void grid::Grid::draw( egn::Window& window )
 {
+	 egn::FontManager::get()->write(window, "shoes",'m_PlayerInfo.getScore()', egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
 	for( int i = 0; i < m_Grid.size(); i++ )
 	{
 		for( int j = 0; j < m_Grid[0].size(); j++ )
