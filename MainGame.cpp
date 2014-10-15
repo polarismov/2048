@@ -80,18 +80,21 @@ void MainGame::loop()
             break;
 
             case GS_SET_EASY_PLAY:
+            m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
             break;
 
             case GS_SET_MEDIUM_PLAY:
+            m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
             break;
 
             case GS_SET_HARD_PLAY:
+            m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 3 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
