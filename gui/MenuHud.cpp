@@ -26,10 +26,16 @@ void gui::MenuHud::draw( egn::Window& window)
 	std::ostringstream oss;
     oss << m_Score;
     std::string valscore = "Score: "+oss.str();
-	egn::FontManager::get()->write(window, "shoes", valscore,egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black)
+	egn::FontManager::get()->write(window, "shoes", valscore,egn::Vector2f(10, 50 ), 30, egn::Color::Black);
+
+	std::ostringstream oss1;
+    oss1 << m_Time;
+    std::string valtime = "Temps: "+oss1.str();
+    egn::FontManager::get()->write(window, "shoes", valtime,egn::Vector2f(620, 50 ), 30, egn::Color::Black);
+
 }
 
-void gui::MenuHud::set( const std::string var, int value)
+void gui::MenuHud::set( const std::string& var, int value)
 {
 	if ( var == "score" )
 	{
@@ -41,11 +47,11 @@ void gui::MenuHud::set( const std::string var, int value)
 	}
 	else if ( var == "time")
 	{
-		m_Time = var;
+		m_Time = value;
 	}
 }
 
-void gui::MenuHud::set( const std::string var, std::string value)
+void gui::MenuHud::set( const std::string& var, std::string value)
 {
 
 }

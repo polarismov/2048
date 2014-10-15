@@ -176,7 +176,6 @@ void grid::Grid::update()
 			popNumber( 1 );
 		}
 	}
-	std::cerr << "score : " << m_PlayerInfo.getScore() << std::endl;
 }
 
 void grid::Grid::move( DIR direction )
@@ -394,7 +393,7 @@ void grid::Grid::move( DIR direction )
 
 void grid::Grid::draw( egn::Window& window )
 {
-	 egn::FontManager::get()->write(window, "shoes",'m_PlayerInfo.getScore()', egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
+	 
 	for( int i = 0; i < m_Grid.size(); i++ )
 	{
 		for( int j = 0; j < m_Grid[0].size(); j++ )

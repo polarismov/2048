@@ -10,6 +10,7 @@
 #include "gui/MenuStart.hpp"
 #include "gui/MenuPlay.hpp"
 #include "gui/MenuOption.hpp"
+#include "gui/MenuHud.hpp"
 
 #include "GameState.hpp"
 
@@ -50,7 +51,7 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
     m_GuiMgr.add( new gui::MenuPlay(), "menu_play" );
     m_GuiMgr.add( new gui::MenuOption(), "menu_option" );
-
+    m_GuiMgr.add( new gui::MenuHud(), "menu_hud" );
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();
@@ -84,6 +85,7 @@ void MainGame::loop()
             m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
+            m_Grid.getPlayerInfo().initTime();
             break;
 
             case GS_SET_MEDIUM_PLAY:
@@ -91,6 +93,7 @@ void MainGame::loop()
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
+            m_Grid.getPlayerInfo().initTime();
             break;
 
             case GS_SET_HARD_PLAY:
@@ -98,12 +101,17 @@ void MainGame::loop()
             m_Grid.setSize( 3 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
+            m_Grid.getPlayerInfo().initTime();
             break;
 
             case GS_PLAY:
             m_Grid.update();
+            m_GuiMgr.set( "menu_hud", "score", m_Grid.getPlayerInfo().getScore() );
+            m_GuiMgr.set( "menu_hud", "time", m_Grid.getPlayerInfo().getTime() );
+            m_GuiMgr.update("menu_hud");
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_Grid.draw( m_Window );
+            m_GuiMgr.draw( "menu_hud", m_Window );
             break;
 
             case GS_MENU_OPTION:
