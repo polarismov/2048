@@ -46,6 +46,5 @@ void grid::PlayerInfo::initTime()
 
 float grid::PlayerInfo::getTime()
 {
-	time(&m_CurrentTime);
 	return (float)difftime( m_CurrentTime, m_StartTime);
 }

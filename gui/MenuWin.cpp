@@ -135,3 +135,10 @@ void gui::MenuWin::set( const std::string& var, int value )
 		m_Time = value;
 	}	
 }
+
+void gui::MenuWin::updateCursor( int value )
+{
+    m_Cursor += value;
+    if( m_Cursor < 0 ) m_Cursor = 2;
+    if( m_Cursor > 2 ) m_Cursor = 0;
+}
