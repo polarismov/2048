@@ -76,6 +76,7 @@ void MainGame::loop()
         switch( GameState::get() )
         {
             case GS_MENU_START:
+            egn::AudioManager::get()->playMusic("data/audio/music1.ogg");
             m_GuiMgr.update( "menu_start" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_start", m_Window );

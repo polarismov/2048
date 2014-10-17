@@ -2,6 +2,7 @@
 
 #include "LogManager.hpp"
 
+#include <SFML/Audio.hpp>
 egn::AudioManager::AudioManager()
 {
     m_VolumeMusic = 50;
