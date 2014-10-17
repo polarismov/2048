@@ -5,7 +5,7 @@ GS GameState::s_PreviousState;
 
 void GameState::set( GS state )
 {
-	if( s_State != GS_PLAY )
+	if( s_State != GS_PLAY && s_State != GS_MENU_PAUSE )
 		s_PreviousState = s_State;
 	s_State = state;
 }

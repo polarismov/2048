@@ -100,6 +100,22 @@ bool grid::Grid::moveIsPossible()
 	return possible;
 }
 
+void grid::Grid::cheat( int value )
+{
+	bool n = true;
+	while( n )
+	{
+		int x = egn::GameTime::getRandomInt( 0, m_Size );
+		int y = egn::GameTime::getRandomInt( 0, m_Size );
+
+		if( m_Grid[y][x].get() == 0 )
+		{
+			m_Grid[y][x].set( value );
+			n = false;
+		}
+	}
+}
+
 void grid::Grid::popNumber( int n )
 {
 	while( n )
@@ -125,6 +141,20 @@ void grid::Grid::popNumber( int n )
 
 void grid::Grid::update()
 {
+
+	if( egn::Keyboard::isActive( "return" ) )
+	{
+		GameState::set( GS_MENU_PAUSE );
+		egn::Keyboard::setActive("return",false);
+	}
+
+	if( egn::Keyboard::isActive( "space" ) )
+	{
+		cheat( 1024 );
+		egn::Keyboard::setActive( "space", false );
+	}
+
+
 	if( m_InMove == false )
 	{
 		if( egn::Keyboard::isActive("up") )
@@ -157,6 +187,11 @@ void grid::Grid::update()
 		{
 			ref ref_tmp = m_MoveNumber[i].getRef();
 			m_Grid[ref_tmp.i][ref_tmp.j].setDraw( true );
+			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 )
+			{
+				GameState::set(GS_MENU_WIN);
+				m_InMove = false;
+			}
 		}
 	}
 
@@ -176,6 +211,8 @@ void grid::Grid::update()
 			popNumber( 1 );
 		}
 	}
+
+	m_PlayerInfo.update();
 }
 
 void grid::Grid::move( DIR direction )
@@ -384,8 +421,6 @@ void grid::Grid::move( DIR direction )
 		}
 		break;
 	}
-
-	m_PlayerInfo.update();
 
 	if( isFull() && !moveIsPossible() )
 	{

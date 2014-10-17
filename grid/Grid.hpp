@@ -38,6 +38,9 @@ namespace grid
 
 		void move( DIR direction );
 
+		/* fonction de triche */
+		void cheat( int value );
+
 		/* retourne true si la grille est remplie */
 		bool isFull();
 

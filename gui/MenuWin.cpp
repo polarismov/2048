@@ -41,7 +41,7 @@ void gui::MenuWin::update()
         switch (m_Cursor)
         {
             case 0:
-
+            GameState::set( GameState::previous() );
             break;
 
             case 1:
@@ -58,7 +58,7 @@ void gui::MenuWin::update()
 
 void gui::MenuWin::draw( egn::Window& window )
 {
-	egn::FontManager::get()->write(window, "shoes", "YOU WIN",egn::Vector2f( 260, 100 ), 50, egn::Color::Black);
+	egn::FontManager::get()->write(window, "shoes", "You Win",egn::Vector2f( 280, 100 ), 50, egn::Color::Black);
 
 	std::ostringstream oss;
     oss << m_Score;
@@ -68,7 +68,7 @@ void gui::MenuWin::draw( egn::Window& window )
 	std::ostringstream oss1;
     oss1 << m_Time;
     std::string valtime = "Temps: "+oss1.str();
-    egn::FontManager::get()->write(window, "shoes", valtime,egn::Vector2f( 300, 300 ), 20, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", valtime,egn::Vector2f( 300, 250 ), 20, egn::Color::Black);
     
     /*debut recommencer*/
     m_Button[0].setPosition( egn::Vector2f( 250, 300 ) );
@@ -82,7 +82,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Recommencer",egn::Vector2f( 290, 300 ), 20, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Recommencer",egn::Vector2f( 290, 308 ), 30, egn::Color::Black);
     /*fin recommencer*/
 
     /*debut retour*/
@@ -96,7 +96,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Retour Au Menu",egn::Vector2f( 290, 370 ), 20, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Menu Principal",egn::Vector2f( 270, 378 ), 30, egn::Color::Black);
     /*fin retour*/
 
     /*debut Quitter*/
@@ -110,7 +110,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Quitter",egn::Vector2f( 290, 440 ), 20, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Quitter",egn::Vector2f( 330, 448 ), 30, egn::Color::Black);
     /*fin quittter*/
 
 }
