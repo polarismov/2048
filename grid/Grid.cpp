@@ -157,6 +157,10 @@ void grid::Grid::update()
 		{
 			ref ref_tmp = m_MoveNumber[i].getRef();
 			m_Grid[ref_tmp.i][ref_tmp.j].setDraw( true );
+			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 )
+			{
+				GameState::set(GS_MENU_WIN);
+			}
 		}
 	}
 

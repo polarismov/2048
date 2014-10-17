@@ -12,6 +12,7 @@
 #include "gui/MenuOption.hpp"
 #include "gui/MenuHud.hpp"
 #include "gui/MenuLose.hpp"
+#include "gui/MenuWin.hpp"
 
 #include "GameState.hpp"
 
@@ -54,6 +55,7 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuOption(), "menu_option" );
     m_GuiMgr.add( new gui::MenuHud(), "menu_hud" );
     m_GuiMgr.add( new gui::MenuLose(), "menu_lose" );
+    m_GuiMgr.add(new gui::MenuWin(), "menu_win");
 
     while( m_Window.isOpen() )
     {
@@ -121,6 +123,14 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_option" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw ( "menu_option", m_Window );
+            break;
+
+            case GS_MENU_WIN:
+            m_GuiMgr.set( "menu_win", "score", m_Grid.getPlayerInfo().getScore() );
+            m_GuiMgr.set( "menu_win", "time", m_Grid.getPlayerInfo().getTime() );
+            m_GuiMgr.update( "menu_win" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_win", m_Window );
             break;
 
             case GS_MENU_LOSE:

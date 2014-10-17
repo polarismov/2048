@@ -8,6 +8,7 @@ namespace gui
 {
 	class MenuWin : public gui::GuiBase
 	{
+	public:
 		MenuWin();
 		~MenuWin();
 
