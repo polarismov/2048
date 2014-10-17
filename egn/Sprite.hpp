@@ -13,6 +13,7 @@ public:
     Sprite();
     ~Sprite();
 
+    /* ne dessiner qu'une partie de l'image */
     void setFocus( egn::IntRect focus );
 
     void setPosition( egn::Vector2f position );

@@ -15,6 +15,7 @@ class GuiBase
 
         virtual void draw( egn::Window& window );
 
+        /* attribuer une valeur à une variable */
         virtual void set( const std::string& var, int value );
         virtual void set( const std::string& var, std::string value );
     protected:

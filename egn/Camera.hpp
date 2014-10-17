@@ -14,12 +14,16 @@ class Camera
 		Camera();
 		~Camera();
 
+		/* redimention camera */
 		void resize( egn::FloatRect position );
 
+		/* déplacer la camera */
 		void move( float x, float y );
 
+		/* déterminer les limites de positionnement de la camera */
 		void setLimit( egn::FloatRect position );
 
+		/* centrer un point */
 		void setFocus( egn::Vector2f focus );
 
 		void copy( egn::Camera& camera );

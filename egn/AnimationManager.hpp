@@ -12,6 +12,7 @@ public:
     AnimationManager();
     ~AnimationManager();
 
+    /* ajouter une animation */
     void add( const std::string& name, egn::Animation animation );
 
     egn::Animation& getAnimation( const std::string& name );
@@ -19,6 +20,7 @@ public:
 
     void update();
 
+    /* animation courante */
     void setAnimation( const std::string& frame );
 protected:
 private:

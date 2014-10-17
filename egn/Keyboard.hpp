@@ -13,6 +13,7 @@ class Keyboard
 public:
     static void init();
 
+    /* renvoie true si la touche key_str est appuyée */
     static bool isActive( const std::string& key_str );
     static void setActive( const std::string& key_str, bool value );
 

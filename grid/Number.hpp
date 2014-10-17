@@ -24,7 +24,10 @@ namespace grid
 		void setPosition( egn::FloatRect rect );
 		void setNextPosition( egn::FloatRect rect );
 
+		/* déplacer le nombre */
 		void move( DIR direction, ref next_vector_index );
+
+		/* renvoie true si le nombre est en mouvement */
 		bool inMove();
 
 		egn::FloatRect getPosition();

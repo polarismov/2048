@@ -14,6 +14,7 @@ class GuiManager
         GuiManager();
         ~GuiManager();
 
+        /* ajouter un pointeur sur menu qui a hérité de GuiBase */
         void add( gui::GuiBase* guiBase, const std::string& name );
 
         void update( const std::string& name );

@@ -27,15 +27,14 @@ namespace grid
 		void draw( egn::Window& window );
 
 
+		/* taille de la grille */
 		void setSize( int size );
 
 
+		/* générer n nombres */
 		void popNumber( int n );
 
-
-		void generateAllNumber();
-
-
+		/* faire un déplacement sur la grille */
 		void move( DIR direction );
 
 		/* fonction de triche */
