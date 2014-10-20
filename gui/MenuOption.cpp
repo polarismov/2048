@@ -49,6 +49,33 @@ void gui::MenuOption::update()
         }
         egn::Keyboard::setActive( "return", false );
     }
+    if ( egn::Keyboard::isActive("left") )
+    {
+        switch(m_Cursor)
+        {
+            case 0:
+            egn::AudioManager::get()->setVolumeSound( egn::AudioManager::get()->getVolumeSound()-1 );
+            break;
+            
+            case 1:
+            egn::AudioManager::get()->setVolumeMusic( egn::AudioManager::get()->getVolumeMusic()-1 );
+            break;
+        }
+    }
+    else if ( egn::Keyboard::isActive("right") )
+    {
+        switch(m_Cursor)
+        {
+            case 0:
+            egn::AudioManager::get()->setVolumeSound( egn::AudioManager::get()->getVolumeSound()+1 );
+            break;
+            
+            case 1:
+            egn::AudioManager::get()->setVolumeMusic( egn::AudioManager::get()->getVolumeMusic()+1 );
+            break;
+        }
+    }
+
 }
 
 void gui::MenuOption::draw(egn::Window& window)

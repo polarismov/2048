@@ -2,7 +2,6 @@
 
 #include "LogManager.hpp"
 
-#include <SFML/Audio.hpp>
 egn::AudioManager::AudioManager()
 {
     m_VolumeMusic = 50;
@@ -33,7 +32,7 @@ void egn::AudioManager::playMusic( const std::string& path )
     }
     else
     {
-        m_Music.play();
+        if( m_Music.getStatus() != sf::Music::Playing ) m_Music.play();
     }
 
 }
@@ -44,6 +43,7 @@ void egn::AudioManager::pauseMusic()
     {
         m_Music.pause();
     }
+
 }
 
 void egn::AudioManager::stopMusic()
@@ -106,13 +106,14 @@ void egn::AudioManager::stopSound( const std::string& id )
 }
 void egn::AudioManager::setVolumeMusic(int volume)
 {
-    m_VolumeMusic = volume;
+    if( volume >= 0 && volume <= 100 ) 
+        m_VolumeMusic = volume;
     m_Music.setVolume(m_VolumeMusic);
-
 }
 void egn::AudioManager::setVolumeSound(int volume)
 {
-    m_VolumeSound = volume;
+   if ( volume >= 0 && volume <= 100 )
+         m_VolumeSound = volume;
     std::map<std::string, sf::Sound>::iterator it;
     for( it = m_Sounds.begin(); it != m_Sounds.end(); ++it)
     {
