@@ -16,6 +16,7 @@
 #include "gui/MenuPause.hpp"
 
 #include "GameState.hpp"
+#include "DataManager.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -31,6 +32,7 @@ MainGame::MainGame()
     egn::TextureManager::init();
     egn::FontManager::init();
     egn::AudioManager::init();
+    DataManager::init();
 
     egn::FontManager::get()->add( "shoes", "data/font/Shoes.ttf" );
     egn::FontManager::get()->add( "olympic", "data/font/Olympic.ttf");
@@ -42,6 +44,8 @@ MainGame::MainGame()
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
+
+
 }
 
 MainGame::~MainGame()
@@ -167,4 +171,5 @@ void MainGame::loop()
     egn::FontManager::kill();
     egn::LogManager::kill();
     egn::AudioManager::kill();
+    DataManager::kill();
 }
