@@ -16,6 +16,8 @@ gui::MenuOption::MenuOption()
 {
     m_Button[0].setTexture( egn::TextureManager::get()->getTexture("data/image/button1.png", egn::Color::White) );
     m_Button[1].setTexture( egn::TextureManager::get()->getTexture("data/image/button2.png", egn::Color::White) );
+
+    m_Cursor = 0;
 }
 
 gui::MenuOption::~MenuOption()

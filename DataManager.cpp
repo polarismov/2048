@@ -49,7 +49,9 @@ void DataManager::basic_load_result()
 		file >> score;
 		file >> time;
 
-		m_Result.push_back( player( pseudo, score, time ) );
+
+		if( pseudo != "" )
+			m_Result.push_back( player( pseudo, score, time ) );
 	}
 
 	file.close();
