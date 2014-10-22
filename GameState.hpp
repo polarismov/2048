@@ -14,6 +14,7 @@ enum gamesate
 	GS_MENU_WIN,
 	GS_MENU_LOSE,
 	GS_MENU_PAUSE,
+	GS_MENU_PSEUDO,
 	GS_EXIT
 } typedef GS;
 

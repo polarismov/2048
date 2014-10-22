@@ -11,7 +11,6 @@
 #include "../GameState.hpp"
 gui::MenuOption::MenuOption()
 {
-    m_Cursor=0;
     m_Button[0].setTexture( egn::TextureManager::get()->getTexture("data/image/button1.png", egn::Color::White) );
     m_Button[1].setTexture( egn::TextureManager::get()->getTexture("data/image/button2.png", egn::Color::White) );
 }
@@ -49,6 +48,7 @@ void gui::MenuOption::update()
         }
         egn::Keyboard::setActive( "return", false );
     }
+    /* Debut volume son*/
     if ( egn::Keyboard::isActive("left") )
     {
         switch(m_Cursor)
@@ -62,6 +62,9 @@ void gui::MenuOption::update()
             break;
         }
     }
+    /* Fin volume son*/
+
+    /* Debut volume musique*/
     else if ( egn::Keyboard::isActive("right") )
     {
         switch(m_Cursor)
@@ -75,6 +78,7 @@ void gui::MenuOption::update()
             break;
         }
     }
+    /*Fin volume musique*/
 
 }
 
