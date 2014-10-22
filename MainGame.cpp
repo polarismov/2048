@@ -45,6 +45,12 @@ MainGame::MainGame()
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
 
+    /* CHARGEMENT */
+    DataManager::get()->basic_load_conf();
+    DataManager::get()->basic_load_result();
+
+    egn::AudioManager::get()->setVolumeMusic( DataManager::get()->get_conf( "volume_music" ) );
+    egn::AudioManager::get()->setVolumeSound( DataManager::get()->get_conf( "volume_sound" ) ); 
 
 }
 
@@ -142,6 +148,7 @@ void MainGame::loop()
             case GS_MENU_WIN:
             m_GuiMgr.set( "menu_win", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.set( "menu_win", "time", m_Grid.getPlayerInfo().getTime() );
+            m_GuiMgr.set( "menu_win", "pseudo", "player" );
             m_GuiMgr.update( "menu_win" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_win", m_Window );

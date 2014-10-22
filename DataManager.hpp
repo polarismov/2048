@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include <fstream>
 
 struct player 
@@ -35,9 +36,10 @@ public:
 	/* insertion configuration non binaire */
 	void basic_insert_conf( std::string conf, int value );
 	void basic_load_conf();
-	int basic_get_conf( std::string conf );
+	int get_conf( std::string conf );
 private:
 	std::vector<player> m_Result;
+	std::map<std::string, int> m_Conf;
 };
 
 
