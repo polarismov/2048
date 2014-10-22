@@ -132,6 +132,18 @@ void gui::MenuWin::set( const std::string& var, int value )
 	if ( var == "score" )
 	{
 		m_Score = value;
+        switch( GameState::previous() )
+        {
+            case GS_SET_4X4_PLAY:
+            m_Score *= 2;
+            break;
+
+            case GS_SET_5X5_PLAY:
+            float tmp = (float)m_Score;
+            tmp *= 1.5;
+            m_Score = (int)tmp;
+            break;
+        }
 	}
 	else if ( var == "bestscore")
 	{

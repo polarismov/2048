@@ -31,15 +31,15 @@ void gui::MenuPlay::update()
         switch (m_Cursor)
         {
             case 0:
-            GameState::set( GS_SET_EASY_PLAY );
+            GameState::set( GS_SET_4X4_PLAY );
             break;
 
             case 1:
-            GameState::set( GS_SET_MEDIUM_PLAY );
+            GameState::set( GS_SET_5X5_PLAY );
             break;
 
             case 2:
-            GameState::set( GS_SET_HARD_PLAY );
+            GameState::set( GS_SET_6X6_PLAY );
             break;
 
             case 3:
@@ -52,7 +52,7 @@ void gui::MenuPlay::update()
 void gui::MenuPlay::draw(egn::Window& window)
 {
     
-    egn::FontManager::get()->write(window, "shoes","Difficulte",egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Choix Partie",egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
     /*facile*/
     m_Button[0].setPosition( egn::Vector2f( 250, 150 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 150 ) );
@@ -64,7 +64,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Facile      6X6",egn::Vector2f(285, 158 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","4X4 bonus x2",egn::Vector2f(280, 158 ), 30, egn::Color::Black);
     /*end facile*/
 
     /*normal*/
@@ -78,7 +78,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Normal     4X4",egn::Vector2f(285, 228 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","5X5 bonus x1,5",egn::Vector2f(280, 228 ), 30, egn::Color::Black);
     /*end normal*/
 
     /*extreme*/
@@ -92,7 +92,7 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Extreme    3X3",egn::Vector2f(285, 298 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","6X6 bonus x0",egn::Vector2f(280, 298 ), 30, egn::Color::Black);
     /*end extreme*/
        
     /*retour*/

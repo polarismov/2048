@@ -14,6 +14,7 @@
 #include "gui/MenuLose.hpp"
 #include "gui/MenuWin.hpp"
 #include "gui/MenuPause.hpp"
+#include "gui/MenuClassement.hpp"
 
 #include "GameState.hpp"
 #include "DataManager.hpp"
@@ -68,6 +69,7 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuLose(), "menu_lose" );
     m_GuiMgr.add( new gui::MenuWin(), "menu_win");
     m_GuiMgr.add( new gui::MenuPause(), "menu_pause" );
+    m_GuiMgr.add( new gui::MenuClassement(), "menu_classement" );
 
     while( m_Window.isOpen() )
     {
@@ -98,15 +100,7 @@ void MainGame::loop()
             m_GuiMgr.draw( "menu_play", m_Window );
             break;
 
-            case GS_SET_EASY_PLAY:
-            m_Grid.getPlayerInfo().setScore( 0 );
-            m_Grid.setSize( 6 );
-            m_Grid.popNumber( 2 );
-            GameState::set( GS_PLAY );
-            m_Grid.getPlayerInfo().initTime();
-            break;
-
-            case GS_SET_MEDIUM_PLAY:
+            case GS_SET_4X4_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
@@ -114,9 +108,17 @@ void MainGame::loop()
             m_Grid.getPlayerInfo().initTime();
             break;
 
-            case GS_SET_HARD_PLAY:
+            case GS_SET_5X5_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
-            m_Grid.setSize( 3 );
+            m_Grid.setSize( 5 );
+            m_Grid.popNumber( 2 );
+            GameState::set( GS_PLAY );
+            m_Grid.getPlayerInfo().initTime();
+            break;
+
+            case GS_SET_6X6_PLAY:
+            m_Grid.getPlayerInfo().setScore( 0 );
+            m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
             GameState::set( GS_PLAY );
             m_Grid.getPlayerInfo().initTime();
@@ -159,6 +161,17 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_lose" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_lose", m_Window );
+            break;
+
+            case GS_MENU_CLASSEMENT:
+            m_GuiMgr.update( "menu_classement" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_classement", m_Window );
+            break;
+
+            case GS_UPDATE_CLASSEMENT:
+            m_GuiMgr.set( "menu_classement", "sort", "" );
+            GameState::set( GS_MENU_CLASSEMENT );
             break;
 
             case GS_EXIT:
