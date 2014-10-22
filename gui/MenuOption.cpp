@@ -9,6 +9,9 @@
 #include "../egn/AudioManager.hpp"
 
 #include "../GameState.hpp"
+
+#include "../DataManager.hpp"
+
 gui::MenuOption::MenuOption()
 {
     m_Button[0].setTexture( egn::TextureManager::get()->getTexture("data/image/button1.png", egn::Color::White) );
@@ -44,6 +47,8 @@ void gui::MenuOption::update()
 
             case 2:
             GameState::set( GS_MENU_START );
+            DataManager::get()->basic_insert_conf( "volume_sound", egn::AudioManager::get()->getVolumeSound() );
+            DataManager::get()->basic_insert_conf( "volume_music", egn::AudioManager::get()->getVolumeMusic() );
             break;
         }
         egn::Keyboard::setActive( "return", false );

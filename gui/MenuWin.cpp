@@ -7,6 +7,7 @@
 #include "../egn/Keyboard.hpp"
 
 #include "../GameState.hpp"
+#include "../DataManager.hpp"
 
 gui::MenuWin::MenuWin()
 {
@@ -16,6 +17,7 @@ gui::MenuWin::MenuWin()
     m_Score = 0;
     m_BestScore = 0;
     m_Time = 0;
+    m_Pseudo = "";
 }
 
 gui::MenuWin::~MenuWin()
@@ -53,6 +55,8 @@ void gui::MenuWin::update()
             break;
         }
         egn::Keyboard::setActive( "return", false );
+
+        DataManager::get()->basic_insert_result( m_Pseudo, m_Score, m_Time );
     }
 }
 
@@ -117,7 +121,10 @@ void gui::MenuWin::draw( egn::Window& window )
 
 void gui::MenuWin::set( const std::string& var, std::string value )
 {
-
+    if( var == "pseudo" )
+    {
+        m_Pseudo = value;
+    }
 }
 
 void gui::MenuWin::set( const std::string& var, int value )
@@ -125,6 +132,18 @@ void gui::MenuWin::set( const std::string& var, int value )
 	if ( var == "score" )
 	{
 		m_Score = value;
+        switch( GameState::previous() )
+        {
+            case GS_SET_4X4_PLAY:
+            m_Score *= 2;
+            break;
+
+            case GS_SET_5X5_PLAY:
+            float tmp = (float)m_Score;
+            tmp *= 1.5;
+            m_Score = (int)tmp;
+            break;
+        }
 	}
 	else if ( var == "bestscore")
 	{
@@ -133,8 +152,9 @@ void gui::MenuWin::set( const std::string& var, int value )
 	else if ( var == "time")
 	{
 		m_Time = value;
-	}	
+	}
 }
+
 
 void gui::MenuWin::updateCursor( int value )
 {

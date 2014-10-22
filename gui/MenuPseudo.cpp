@@ -90,7 +90,7 @@ void gui::MenuPseudo::update()
     }
     else if ( egn::Keyboard::isActive("N")  && m_Pseudo.size() < 20)
     {
-        buffer = "N" 
+        buffer = "N"; 
         egn::Keyboard::setActive("N", false);
     }
     else if ( egn::Keyboard::isActive("O") && m_Pseudo.size() < 20 )

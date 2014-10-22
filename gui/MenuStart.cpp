@@ -45,17 +45,15 @@ void gui::MenuStart::update()
             case 1:
             break;
 
-            case 2:
+            case 2: 
+            GameState::set( GS_UPDATE_CLASSEMENT );
             break;
 
             case 3:
-            break;
-
-            case 4:
             GameState::set( GS_MENU_OPTION);
             break;
 
-            case 5:
+            case 4:
             GameState::set( GS_EXIT );
             break;
         }
@@ -96,7 +94,8 @@ void gui::MenuStart::draw( egn::Window& window )
     egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 320, 228 ), 30, egn::Color::Black );
     /* end challenge */
 
-    /* Contre la montre */
+
+    /* classement */
     m_Button[0].setPosition( egn::Vector2f( 250, 290 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 290 ) );
     if( m_Cursor == 2 )
@@ -107,10 +106,10 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Time Attack", egn::Vector2f( 300, 298 ), 30, egn::Color::Black );
-    /* end contre la montre */
+    egn::FontManager::get()->write( window, "shoes", "Classement", egn::Vector2f( 310, 298 ), 30, egn::Color::Black );
+    /* end classement */
 
-    /* classement */
+    /* Option */
     m_Button[0].setPosition( egn::Vector2f( 250, 360 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 360 ) );
     if( m_Cursor == 3 )
@@ -121,10 +120,10 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Classement", egn::Vector2f( 310, 368 ), 30, egn::Color::Black );
-    /* end classement */
+    egn::FontManager::get()->write( window, "shoes", "Option", egn::Vector2f( 345, 368 ), 30, egn::Color::Black );
+    /* end option */
 
-    /* Option */
+    /* quitter */
     m_Button[0].setPosition( egn::Vector2f( 250, 430 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 430 ) );
     if( m_Cursor == 4 )
@@ -135,21 +134,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Option", egn::Vector2f( 345, 438 ), 30, egn::Color::Black );
-    /* end option */
-
-    /* quitter */
-    m_Button[0].setPosition( egn::Vector2f( 250, 500 ) );
-    m_Button[1].setPosition( egn::Vector2f( 250, 500 ) );
-    if( m_Cursor == 5 )
-    {
-        window.draw( m_Button[1] );
-    }
-    else 
-    {
-        window.draw( m_Button[0] );
-    }
-    egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 340, 508 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 340, 438 ), 30, egn::Color::Black );
     /* end quitter */
     
 }
@@ -157,8 +142,8 @@ void gui::MenuStart::draw( egn::Window& window )
 void gui::MenuStart::updateCursor( int value )
 {
     m_Cursor += value;
-    if( m_Cursor < 0 ) m_Cursor = 5;
-    if( m_Cursor > 5 ) m_Cursor = 0;
+    if( m_Cursor < 0 ) m_Cursor = 4;
+    if( m_Cursor > 4 ) m_Cursor = 0;
 }
 
 

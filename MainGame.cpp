@@ -14,8 +14,11 @@
 #include "gui/MenuLose.hpp"
 #include "gui/MenuWin.hpp"
 #include "gui/MenuPause.hpp"
+#include "gui/MenuClassement.hpp"
+#include "gui/MenuPseudo.hpp"
 
 #include "GameState.hpp"
+#include "DataManager.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -31,6 +34,7 @@ MainGame::MainGame()
     egn::TextureManager::init();
     egn::FontManager::init();
     egn::AudioManager::init();
+    DataManager::init();
 
     egn::FontManager::get()->add( "shoes", "data/font/Shoes.ttf" );
     egn::FontManager::get()->add( "olympic", "data/font/Olympic.ttf");
@@ -42,6 +46,14 @@ MainGame::MainGame()
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
+
+    /* CHARGEMENT */
+    DataManager::get()->basic_load_conf();
+    DataManager::get()->basic_load_result();
+
+    egn::AudioManager::get()->setVolumeMusic( DataManager::get()->get_conf( "volume_music" ) );
+    egn::AudioManager::get()->setVolumeSound( DataManager::get()->get_conf( "volume_sound" ) ); 
+
 }
 
 MainGame::~MainGame()
@@ -58,6 +70,8 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuLose(), "menu_lose" );
     m_GuiMgr.add( new gui::MenuWin(), "menu_win");
     m_GuiMgr.add( new gui::MenuPause(), "menu_pause" );
+    m_GuiMgr.add( new gui::MenuClassement(), "menu_classement" );
+    m_GuiMgr.add( new gui::MenuPseudo(), "menu_pseudo");
 
     while( m_Window.isOpen() )
     {
@@ -88,28 +102,34 @@ void MainGame::loop()
             m_GuiMgr.draw( "menu_play", m_Window );
             break;
 
-            case GS_SET_EASY_PLAY:
-            m_Grid.getPlayerInfo().setScore( 0 );
-            m_Grid.setSize( 6 );
-            m_Grid.popNumber( 2 );
-            GameState::set( GS_PLAY );
-            m_Grid.getPlayerInfo().initTime();
-            break;
-
-            case GS_SET_MEDIUM_PLAY:
+            case GS_SET_4X4_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
-            GameState::set( GS_PLAY );
+            GameState::set( GS_MENU_PSEUDO );
             m_Grid.getPlayerInfo().initTime();
             break;
 
-            case GS_SET_HARD_PLAY:
+            case GS_SET_5X5_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
-            m_Grid.setSize( 3 );
+            m_Grid.setSize( 5 );
             m_Grid.popNumber( 2 );
-            GameState::set( GS_PLAY );
+            GameState::set( GS_MENU_PSEUDO  );
             m_Grid.getPlayerInfo().initTime();
+            break;
+
+            case GS_SET_6X6_PLAY:
+            m_Grid.getPlayerInfo().setScore( 0 );
+            m_Grid.setSize( 6 );
+            m_Grid.popNumber( 2 );
+            GameState::set( GS_MENU_PSEUDO  );
+            m_Grid.getPlayerInfo().initTime();
+            break;
+
+            case GS_MENU_PSEUDO :
+            m_GuiMgr.update("menu_pseudo");
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_pseudo", m_Window );
             break;
 
             case GS_PLAY:
@@ -138,6 +158,7 @@ void MainGame::loop()
             case GS_MENU_WIN:
             m_GuiMgr.set( "menu_win", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.set( "menu_win", "time", m_Grid.getPlayerInfo().getTime() );
+            m_GuiMgr.set( "menu_win", "pseudo", "player" );
             m_GuiMgr.update( "menu_win" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_win", m_Window );
@@ -148,6 +169,17 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_lose" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_lose", m_Window );
+            break;
+
+            case GS_MENU_CLASSEMENT:
+            m_GuiMgr.update( "menu_classement" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_classement", m_Window );
+            break;
+
+            case GS_UPDATE_CLASSEMENT:
+            m_GuiMgr.set( "menu_classement", "sort", "" );
+            GameState::set( GS_MENU_CLASSEMENT );
             break;
 
             case GS_EXIT:
@@ -167,4 +199,5 @@ void MainGame::loop()
     egn::FontManager::kill();
     egn::LogManager::kill();
     egn::AudioManager::kill();
+    DataManager::kill();
 }

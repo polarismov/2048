@@ -19,6 +19,7 @@ namespace gui
         virtual void set( const std::string& var, int value );
         virtual void set( const std::string& var, std::string value );
 	private:
+		std::string m_Pseudo;
 		int m_Score;
 		float m_Time;
 		int m_BestScore;
