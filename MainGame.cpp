@@ -132,6 +132,11 @@ void MainGame::loop()
             m_GuiMgr.draw( "menu_pseudo", m_Window );
             break;
 
+            case GS_SET_PSEUDO:
+            m_Grid.getPlayerInfo().setPseudo( m_GuiMgr.get_string( "menu_pseudo", "pseudo" ) );
+            GameState::set( GS_PLAY );
+            break;
+
             case GS_PLAY:
             m_Grid.update();
             m_GuiMgr.set( "menu_hud", "score", m_Grid.getPlayerInfo().getScore() );
@@ -158,7 +163,7 @@ void MainGame::loop()
             case GS_MENU_WIN:
             m_GuiMgr.set( "menu_win", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.set( "menu_win", "time", m_Grid.getPlayerInfo().getTime() );
-            m_GuiMgr.set( "menu_win", "pseudo", "player" );
+            m_GuiMgr.set( "menu_win", "pseudo", m_Grid.getPlayerInfo().getPseudo() );
             m_GuiMgr.update( "menu_win" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_win", m_Window );

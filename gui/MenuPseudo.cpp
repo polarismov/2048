@@ -208,7 +208,7 @@ void gui::MenuPseudo::update()
 
    if( egn::Keyboard::isActive("return") )
 	{
-		GameState::set(GS_PLAY);
+		GameState::set(GS_SET_PSEUDO);
 		egn::Keyboard::setActive( "return", false );
 	}
 }
@@ -219,13 +219,16 @@ void gui::MenuPseudo::draw( egn::Window& window )
 	egn::FontManager::get()->write(window, "shoes", m_Pseudo, egn::Vector2f(305,158), 20, egn::Color::Black);
 }
 
-void gui::MenuPseudo::set(  const std::string& var, std::string value )
-{
 
-}
-
-std::string gui::MenuPseudo::getPseudo()
+std::string gui::MenuPseudo::get_string( const std::string& var )
 {
-	return m_Pseudo;
+    std::string value = "";
+
+    if( var == "pseudo" )
+    {
+        value = m_Pseudo;
+    }
+
+    return value;
 }
 

@@ -33,4 +33,16 @@ void gui::GuiBase::set( const std::string& var, std::string value )
 	//set
 }
 
+std::string gui::GuiBase::get_string( const std::string& var )
+{
+	return "";
+}
+
+
+int gui::GuiBase::get_int( const std::string& var )
+{
+	return -1;
+}
+
+
 
