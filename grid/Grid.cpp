@@ -118,24 +118,36 @@ void grid::Grid::cheat( int value )
 
 void grid::Grid::popNumber( int n )
 {
+	std::vector<ref> tmp_ref_list;
+	for( int i = 0; i < m_Grid.size(); i++ )
+	{
+		for( int j = 0; j < m_Grid[0].size(); j++ )
+		{
+			if( m_Grid[i][j].get() == 0 )
+			{
+				ref tmp;
+				tmp.i = i;
+				tmp.j = j;
+				tmp_ref_list.push_back( tmp );
+			}
+		}
+	}
 	while( n )
 	{
-		int x = egn::GameTime::getRandomInt( 0, m_Size );
-		int y = egn::GameTime::getRandomInt( 0, m_Size );
+		int gen = egn::GameTime::getRandomInt( 0, tmp_ref_list.size() );
 
-		if( m_Grid[y][x].get() == 0 )
+		int percent = egn::GameTime::getRandomInt( 0, 101 );
+		if( percent < 95 )
 		{
-			int percent = egn::GameTime::getRandomInt( 0, 101 );
-			if( percent < 95 )
-			{
-				m_Grid[y][x].set( 2 );
-			}
-			else 
-			{
-				m_Grid[y][x].set( 4 );
-			}
-			n--;
+			m_Grid[tmp_ref_list[gen].i][tmp_ref_list[gen].j].set( 2 );
 		}
+		else 
+		{
+			m_Grid[tmp_ref_list[gen].i][tmp_ref_list[gen].j].set( 4 );
+		}
+		tmp_ref_list.erase( tmp_ref_list.begin() + gen );
+		n--;
+
 	}
 }
 
