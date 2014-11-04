@@ -215,7 +215,7 @@ void gui::MenuPseudo::update()
 void gui::MenuPseudo::draw( egn::Window& window )
 {
 	window.drawRect(egn::FloatRect (300, 158, 250, 30), egn::Color(0xF5, 0xF6, 0xCE));
-	egn::FontManager::get()->write(window, "shoes", "Entree votre pseudo", egn::Vector2f(10,158), 20, egn::Color::Black);
+	egn::FontManager::get()->write(window, "shoes", "Entrer votre pseudo", egn::Vector2f(10,158), 20, egn::Color::Black);
 	egn::FontManager::get()->write(window, "shoes", m_Pseudo, egn::Vector2f(305,158), 20, egn::Color::Black);
 }
 
