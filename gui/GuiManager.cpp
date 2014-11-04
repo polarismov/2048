@@ -65,6 +65,34 @@ void gui::GuiManager::set( const std::string& menu, const std::string& var, std:
     }
 }
 
+std::string gui::GuiManager::get_string( const std::string& menu, const std::string& var )
+{
+    std::string value = "";
+    if( m_Gui.find( menu ) != m_Gui.end() )
+    {
+        value = m_Gui[menu]->get_string( var );
+    }
+    else 
+    {
+        std::cerr << menu << " n'existe pas" << std::endl;
+    }
+    return value;
+
+}
+int gui::GuiManager::get_int( const std::string& menu, const std::string& var )
+{
+    int value = -1;
+    if( m_Gui.find( menu ) != m_Gui.end() )
+    {
+        value = m_Gui[menu]->get_int( var );
+    }
+    else 
+    {
+        std::cerr << menu << " n'existe pas" << std::endl;
+    }
+    return value;
+}
+
 gui::GuiBase* gui::GuiManager::getMenu( const std::string& name )
 {
     return m_Gui[name];

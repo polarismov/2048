@@ -32,6 +32,10 @@ int grid::PlayerInfo::getScore()
 void grid::PlayerInfo::setPseudo( std::string pseudo)
 {
 	m_Pseudo = pseudo;
+	if( m_Pseudo == "" )
+	{
+		m_Pseudo = "Player";
+	}
 }
 
 std::string grid::PlayerInfo::getPseudo()

@@ -15,9 +15,8 @@ class MenuPseudo : public GuiBase
         virtual void update();
 
         virtual void draw( egn::Window& window );
-
-         void set(  const std::string& var, std::string value );
-		std::string getPseudo();
+		
+        virtual std::string get_string( const std::string& var );
     protected:
     private:
     	std::string m_Pseudo;
