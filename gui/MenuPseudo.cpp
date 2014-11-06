@@ -203,6 +203,11 @@ void gui::MenuPseudo::update()
         buffer = "9"; 
         egn::Keyboard::setActive("9", false);
     }
+    else if ( egn::Keyboard::isActive("backSpace") )
+    {
+       if (m_Pseudo.size () > 0) m_Pseudo.erase( m_Pseudo.begin() + m_Pseudo.size() - 1 );
+        egn::Keyboard::setActive("backSpace", false );
+    }
    
    if( buffer != "" ) m_Pseudo += buffer;
 

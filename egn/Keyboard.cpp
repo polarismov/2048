@@ -12,6 +12,7 @@ void egn::Keyboard::init()
     s_Keys["right"]     = false;
     s_Keys["space"]     = false;
     s_Keys["return"]    = false;
+    s_Keys["backSpace"] = false;
     s_Keys["A"]         = false;
     s_Keys["B"]         = false;
     s_Keys["C"]         = false;
@@ -129,6 +130,10 @@ std::string egn::Keyboard::keyToStr( sf::Keyboard::Key key )
         key_str = "return";
         break;
 
+        case sf::Keyboard::BackSpace:
+        key_str = "backSpace";
+        break;
+        
         case sf::Keyboard::A:
         key_str = "A";
         break;
