@@ -45,11 +45,14 @@ namespace grid
 
 		/* retourne true si deux cases cote à cote ont la même valeur */
 		bool moveIsPossible();
+		bool moveIsPossible( DIR direction );
 
 		grid::PlayerInfo& getPlayerInfo();
 
 	private:
 		egn::Sprite m_BlankScare;
+		
+		DIR m_Direction;
 
 		std::vector<std::vector<grid::Number> > m_Grid;
 		std::vector<grid::Number> m_MoveNumber;
