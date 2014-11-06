@@ -100,6 +100,95 @@ bool grid::Grid::moveIsPossible()
 	return possible;
 }
 
+bool grid::Grid::moveIsPossible( DIR direction )
+{
+	bool possible = false;
+	
+	switch( direction )
+	{
+		case DIR_UP:
+		for( int i = 0; i < m_Grid.size(); i++ )
+		{
+			for( int j = 0; j < m_Grid[0].size(); j++ )
+			{
+				if( m_Grid[i][j].get() == 0 ) continue;
+				
+				for( int k = i-1; k >= 0; k-- )
+				{
+						if( m_Grid[i][j].get() == m_Grid[k][j].get() ) possible = true;
+						else break;
+						
+				}
+			}
+			
+			if( possible ) break;
+		}
+		break;
+		
+		case DIR_DOWN:
+		for( int i = m_Grid.size() - 1; i >= 0; i-- )
+		{
+			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
+			{
+				if( m_Grid[i][j].get() == 0 ) continue;
+				
+				for( int k = i+1; k < m_Grid.size(); k++ )
+				{
+					if( m_Grid[i][j].get() == m_Grid[k][j].get() ) possible = true;
+					else break;
+				}
+				
+			}
+			
+			if( possible ) break;
+			
+		}
+		break;
+		
+		case DIR_LEFT:
+		for( int i = 0; i < m_Grid.size(); i++ )
+		{
+			for( int j = 0; j < m_Grid[0].size(); j++ )
+			{
+				if( m_Grid[i][j].get() == 0 ) continue;
+				
+
+				for( int k = j-1; k >= 0; k--)
+				{
+					if( m_Grid[i][j].get() == m_Grid[i][k].get() ) possible = true;
+					else break;
+				}
+				
+			}
+			
+			if( possible ) break;
+			
+		}
+		break;
+		
+		case DIR_RIGHT:
+		for( int i = 0; i < m_Grid.size(); i++ )
+		{
+			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
+			{
+				if( m_Grid[i][j].get() == 0 ) continue;
+				
+				for( int k = j+1; k < m_Grid[0].size(); k++ )
+				{
+					if( m_Grid[i][j].get() == m_Grid[i][k].get() ) possible = true;
+					else break;
+				}
+				
+			}
+			
+			if( possible ) break;
+			
+		}
+		break;
+	}
+	return possible;
+}
+
 void grid::Grid::cheat( int value )
 {
 	bool n = true;
@@ -162,7 +251,7 @@ void grid::Grid::update()
 
 	if( egn::Keyboard::isActive( "space" ) )
 	{
-		cheat( 1024 );
+		m_InMove = false;
 		egn::Keyboard::setActive( "space", false );
 	}
 
@@ -171,7 +260,6 @@ void grid::Grid::update()
 	{
 		if( egn::Keyboard::isActive("up") )
 		{
-
 			move(DIR_UP);
 			egn::Keyboard::setActive("up",false);
 		}
@@ -217,10 +305,17 @@ void grid::Grid::update()
 
 	if( m_MoveNumber.size() <= 0 && m_InMove == true )
 	{
-		m_InMove = false;
-		if( !isFull() ) 
+		if( !moveIsPossible( m_Direction ) )
 		{
-			popNumber( 1 );
+			m_InMove = false;
+			if( !isFull() ) 
+			{
+				popNumber( 1 );
+			}	
+		}
+		else 
+		{
+			move( m_Direction );
 		}
 	}
 
@@ -230,6 +325,7 @@ void grid::Grid::update()
 void grid::Grid::move( DIR direction )
 {
 	m_InMove = true;
+	m_Direction = direction;
 	switch( direction )
 	{
 		case DIR_UP:
