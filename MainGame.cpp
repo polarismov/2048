@@ -42,7 +42,7 @@ MainGame::MainGame()
 
     srand(time(NULL));
 
-    GameState::set( GS_MENU_START );
+    GameState::set( Gamestate::MENU_START );
 
     egn::Camera camera = egn::Camera( egn::FloatRect( 0, 0, 800, 600 ) );
     m_Window.setCamera( camera );
@@ -84,60 +84,60 @@ void MainGame::loop()
 
         if( egn::Keyboard::isActive( "quit") || egn::Keyboard::isActive( "escape") )
         {
-            GameState::set( GS_EXIT );
+            GameState::set( Gamestate::EXIT );
         }
 
         switch( GameState::get() )
         {
-            case GS_MENU_START:
+            case Gamestate::MENU_START:
             egn::AudioManager::get()->playMusic("data/audio/music1.ogg");
             m_GuiMgr.update( "menu_start" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_start", m_Window );
             break;
 
-            case GS_MENU_PLAY:
+            case Gamestate::MENU_PLAY:
             m_GuiMgr.update( "menu_play" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_play", m_Window );
             break;
 
-            case GS_SET_4X4_PLAY:
+            case Gamestate::SET_4X4_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
-            GameState::set( GS_MENU_PSEUDO );
+            GameState::set( Gamestate::MENU_PSEUDO );
             m_Grid.getPlayerInfo().initTime();
             break;
 
-            case GS_SET_5X5_PLAY:
+            case Gamestate::SET_5X5_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 5 );
             m_Grid.popNumber( 2 );
-            GameState::set( GS_MENU_PSEUDO  );
+            GameState::set( Gamestate::MENU_PSEUDO  );
             m_Grid.getPlayerInfo().initTime();
             break;
 
-            case GS_SET_6X6_PLAY:
+            case Gamestate::SET_6X6_PLAY:
             m_Grid.getPlayerInfo().setScore( 0 );
             m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
-            GameState::set( GS_MENU_PSEUDO  );
+            GameState::set( Gamestate::MENU_PSEUDO  );
             m_Grid.getPlayerInfo().initTime();
             break;
 
-            case GS_MENU_PSEUDO :
+            case Gamestate::MENU_PSEUDO :
             m_GuiMgr.update("menu_pseudo");
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_pseudo", m_Window );
             break;
 
-            case GS_SET_PSEUDO:
+            case Gamestate::SET_PSEUDO:
             m_Grid.getPlayerInfo().setPseudo( m_GuiMgr.get_string( "menu_pseudo", "pseudo" ) );
-            GameState::set( GS_PLAY );
+            GameState::set( Gamestate::PLAY );
             break;
 
-            case GS_PLAY:
+            case Gamestate::PLAY:
             m_Grid.update();
             m_GuiMgr.set( "menu_hud", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.set( "menu_hud", "time", m_Grid.getPlayerInfo().getTime() );
@@ -147,20 +147,20 @@ void MainGame::loop()
             m_GuiMgr.draw( "menu_hud", m_Window );
             break;
 
-            case GS_MENU_PAUSE:
+            case Gamestate::MENU_PAUSE:
             m_GuiMgr.update( "menu_pause" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_Grid.draw( m_Window );
             m_GuiMgr.draw( "menu_pause", m_Window );
             break;
 
-            case GS_MENU_OPTION:
+            case Gamestate::MENU_OPTION:
             m_GuiMgr.update( "menu_option" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw ( "menu_option", m_Window );
             break;
 
-            case GS_MENU_WIN:
+            case Gamestate::MENU_WIN:
             m_GuiMgr.set( "menu_win", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.set( "menu_win", "time", m_Grid.getPlayerInfo().getTime() );
             m_GuiMgr.set( "menu_win", "pseudo", m_Grid.getPlayerInfo().getPseudo() );
@@ -169,25 +169,25 @@ void MainGame::loop()
             m_GuiMgr.draw( "menu_win", m_Window );
             break;
 
-            case GS_MENU_LOSE:
+            case Gamestate::MENU_LOSE:
             m_GuiMgr.set( "menu_lose", "score", m_Grid.getPlayerInfo().getScore() );
             m_GuiMgr.update( "menu_lose" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_lose", m_Window );
             break;
 
-            case GS_MENU_CLASSEMENT:
+            case Gamestate::MENU_CLASSEMENT:
             m_GuiMgr.update( "menu_classement" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_classement", m_Window );
             break;
 
-            case GS_UPDATE_CLASSEMENT:
+            case Gamestate::UPDATE_CLASSEMENT:
             m_GuiMgr.set( "menu_classement", "sort", "" );
-            GameState::set( GS_MENU_CLASSEMENT );
+            GameState::set( Gamestate::MENU_CLASSEMENT );
             break;
 
-            case GS_EXIT:
+            case Gamestate::EXIT:
             m_Window.close();
             break;
         }

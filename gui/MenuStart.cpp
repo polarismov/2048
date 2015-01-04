@@ -39,22 +39,22 @@ void gui::MenuStart::update()
         switch( m_Cursor )
         {
             case 0:
-            GameState::set( GS_MENU_PLAY );
+            GameState::set( Gamestate::MENU_PLAY );
             break;
 
             case 1:
             break;
 
             case 2: 
-            GameState::set( GS_UPDATE_CLASSEMENT );
+            GameState::set( Gamestate::UPDATE_CLASSEMENT );
             break;
 
             case 3:
-            GameState::set( GS_MENU_OPTION );
+            GameState::set( Gamestate::MENU_OPTION );
             break;
 
             case 4:
-            GameState::set( GS_EXIT );
+            GameState::set( Gamestate::EXIT );
             break;
         }
 

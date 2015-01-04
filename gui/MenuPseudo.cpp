@@ -213,7 +213,7 @@ void gui::MenuPseudo::update()
 
    if( egn::Keyboard::isActive("return") )
 	{
-		GameState::set(GS_SET_PSEUDO);
+		GameState::set(Gamestate::SET_PSEUDO);
 		egn::Keyboard::setActive( "return", false );
 	}
 }

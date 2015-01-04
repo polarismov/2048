@@ -2,14 +2,33 @@
 #define COMMON_HPP
 
 
-enum direction 
+enum class Direction 
 { 
-	DIR_UP,
-	DIR_DOWN,
-	DIR_LEFT,
-	DIR_RIGHT,
-	DIR_NONE
-} typedef DIR;
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	NONE
+};
+
+enum class Gamestate
+{
+	MENU_START,
+	MENU_PLAY,
+	MENU_OPTION,
+	PLAY,
+	SET_4X4_PLAY,
+	SET_5X5_PLAY,
+	SET_6X6_PLAY,
+	SET_PSEUDO,
+	MENU_WIN,
+	MENU_LOSE,
+	MENU_PAUSE,
+	MENU_PSEUDO,
+	MENU_CLASSEMENT,
+	UPDATE_CLASSEMENT,
+	EXIT
+};
 
 
 struct ref

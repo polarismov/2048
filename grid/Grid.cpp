@@ -100,13 +100,13 @@ bool grid::Grid::moveIsPossible()
 	return possible;
 }
 
-bool grid::Grid::moveIsPossible( DIR direction )
+bool grid::Grid::moveIsPossible( Direction direction )
 {
 	bool possible = false;
 	
 	switch( direction )
 	{
-		case DIR_UP:
+		case Direction::UP:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = 0; j < m_Grid[0].size(); j++ )
@@ -125,7 +125,7 @@ bool grid::Grid::moveIsPossible( DIR direction )
 		}
 		break;
 		
-		case DIR_DOWN:
+		case Direction::DOWN:
 		for( int i = m_Grid.size() - 1; i >= 0; i-- )
 		{
 			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
@@ -145,7 +145,7 @@ bool grid::Grid::moveIsPossible( DIR direction )
 		}
 		break;
 		
-		case DIR_LEFT:
+		case Direction::LEFT:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = 0; j < m_Grid[0].size(); j++ )
@@ -166,7 +166,7 @@ bool grid::Grid::moveIsPossible( DIR direction )
 		}
 		break;
 		
-		case DIR_RIGHT:
+		case Direction::RIGHT:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
@@ -245,7 +245,7 @@ void grid::Grid::update()
 
 	if( egn::Keyboard::isActive( "return" ) )
 	{
-		GameState::set( GS_MENU_PAUSE );
+		GameState::set( Gamestate::MENU_PAUSE );
 		egn::Keyboard::setActive("return",false);
 	}
 
@@ -260,22 +260,22 @@ void grid::Grid::update()
 	{
 		if( egn::Keyboard::isActive("up") )
 		{
-			move(DIR_UP);
+			move(Direction::UP);
 			egn::Keyboard::setActive("up",false);
 		}
 		else if( egn::Keyboard::isActive("down") )
 		{
-			move(DIR_DOWN);
+			move(Direction::DOWN);
 			egn::Keyboard::setActive("down",false);
 		}
 		else if( egn::Keyboard::isActive("left") )
 		{
-			move(DIR_LEFT);
+			move(Direction::LEFT);
 			egn::Keyboard::setActive("left",false);
 		}
 		else if( egn::Keyboard::isActive("right") )
 		{
-			move(DIR_RIGHT);
+			move(Direction::RIGHT);
 			egn::Keyboard::setActive("right",false);
 		}
 	}
@@ -289,7 +289,7 @@ void grid::Grid::update()
 			m_Grid[ref_tmp.i][ref_tmp.j].setDraw( true );
 			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 )
 			{
-				GameState::set(GS_MENU_WIN);
+				GameState::set(Gamestate::MENU_WIN);
 				m_InMove = false;
 			}
 		}
@@ -322,13 +322,13 @@ void grid::Grid::update()
 	m_PlayerInfo.update();
 }
 
-void grid::Grid::move( DIR direction )
+void grid::Grid::move( Direction direction )
 {
 	m_InMove = true;
 	m_Direction = direction;
 	switch( direction )
 	{
-		case DIR_UP:
+		case Direction::UP:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = 0; j < m_Grid[0].size(); j++ )
@@ -371,7 +371,7 @@ void grid::Grid::move( DIR direction )
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
 						}
 						m_Grid[i][j].set( 0 );
-						number.move( DIR_UP, ref_tmp );
+						number.move( Direction::UP, ref_tmp );
 						m_MoveNumber.push_back( number );
 					}
 				}
@@ -379,7 +379,7 @@ void grid::Grid::move( DIR direction )
 		}
 		break;
 
-		case DIR_DOWN:
+		case Direction::DOWN:
 		for( int i = m_Grid.size() - 1; i >= 0; i-- )
 		{
 			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
@@ -421,7 +421,7 @@ void grid::Grid::move( DIR direction )
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
 						}
 						m_Grid[i][j].set( 0 );
-						number.move( DIR_DOWN, ref_tmp );
+						number.move( Direction::DOWN, ref_tmp );
 						m_MoveNumber.push_back( number );
 					}
 				}
@@ -429,7 +429,7 @@ void grid::Grid::move( DIR direction )
 		}
 		break;
 
-		case DIR_LEFT:
+		case Direction::LEFT:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = 0; j < m_Grid[0].size(); j++ )
@@ -471,7 +471,7 @@ void grid::Grid::move( DIR direction )
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
 						}
 						m_Grid[i][j].set( 0 );
-						number.move( DIR_LEFT, ref_tmp );
+						number.move( Direction::LEFT, ref_tmp );
 						m_MoveNumber.push_back( number );
 					}
 				}
@@ -479,7 +479,7 @@ void grid::Grid::move( DIR direction )
 		}
 		break;
 
-		case DIR_RIGHT:
+		case Direction::RIGHT:
 		for( int i = 0; i < m_Grid.size(); i++ )
 		{
 			for( int j = m_Grid[0].size() - 1; j >= 0; j-- )
@@ -521,7 +521,7 @@ void grid::Grid::move( DIR direction )
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
 						}
 						m_Grid[i][j].set( 0 );
-						number.move( DIR_RIGHT, ref_tmp );
+						number.move( Direction::RIGHT, ref_tmp );
 						m_MoveNumber.push_back( number );
 					}
 				}
@@ -532,7 +532,7 @@ void grid::Grid::move( DIR direction )
 
 	if( isFull() && !moveIsPossible() )
 	{
-		GameState::set( GS_MENU_LOSE );
+		GameState::set( Gamestate::MENU_LOSE );
 	}
 }
 

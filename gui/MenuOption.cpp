@@ -48,7 +48,7 @@ void gui::MenuOption::update()
             break;
 
             case 2:
-            GameState::set( GS_MENU_START );
+            GameState::set( Gamestate::MENU_START );
             DataManager::get()->basic_insert_conf( "volume_sound", egn::AudioManager::get()->getVolumeSound() );
             DataManager::get()->basic_insert_conf( "volume_music", egn::AudioManager::get()->getVolumeMusic() );
             break;

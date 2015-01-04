@@ -82,7 +82,7 @@ void grid::Number::update()
 		egn::Vector2f velocity = egn::Vector2f( 0, 0 );
 		switch( m_Direction )
 		{
-			case DIR_UP:
+			case Direction::UP:
 			velocity.y -= 1000 * egn::GameTime::getElapsedTime();
 			m_Position.top += velocity.y;
 			if( m_Position.top < m_NextPosition.top )
@@ -92,7 +92,7 @@ void grid::Number::update()
 			}
 			break;
 
-			case DIR_DOWN:
+			case Direction::DOWN:
 			velocity.y += 1000 * egn::GameTime::getElapsedTime();
 			m_Position.top += velocity.y;
 			if( m_Position.top > m_NextPosition.top )
@@ -102,7 +102,7 @@ void grid::Number::update()
 			}
 			break;
 
-			case DIR_LEFT:
+			case Direction::LEFT:
 			velocity.x -= 1000 * egn::GameTime::getElapsedTime();
 			m_Position.left += velocity.x;
 			if( m_Position.left < m_NextPosition.left )
@@ -112,7 +112,7 @@ void grid::Number::update()
 			}
 			break;
 
-			case DIR_RIGHT:
+			case Direction::RIGHT:
 			velocity.x += 1000 * egn::GameTime::getElapsedTime();
 			m_Position.left += velocity.x;
 			if( m_Position.left > m_NextPosition.left )
@@ -130,7 +130,7 @@ ref grid::Number::getRef()
 	return m_NextVectorIndex;
 }
 
-void grid::Number::move( DIR direction, ref next_vector_index )
+void grid::Number::move( Direction direction, ref next_vector_index )
 {
 	m_InMove = true;
 	m_Direction = direction;

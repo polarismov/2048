@@ -36,7 +36,7 @@ void gui::MenuPause::update()
 		switch( m_Cursor )
 		{
 			case 0:
-			GameState::set( GS_PLAY );
+			GameState::set( Gamestate::PLAY );
 			break;
 
 			case 1:
@@ -44,11 +44,11 @@ void gui::MenuPause::update()
 			break;
 
 			case 2:
-			GameState::set( GS_MENU_START );
+			GameState::set( Gamestate::MENU_START );
 			break;
 
 			case 3:
-			GameState::set( GS_EXIT );
+			GameState::set( Gamestate::EXIT );
 			break;
 		}
 

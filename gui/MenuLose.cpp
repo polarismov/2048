@@ -43,11 +43,11 @@ void gui::MenuLose::update()
 			break;
 
 			case 1:
-			GameState::set( GS_MENU_START );
+			GameState::set( Gamestate::MENU_START );
 			break;
 
 			case 2:
-			GameState::set( GS_EXIT );
+			GameState::set( Gamestate::EXIT );
 			break;
 		}
 

@@ -44,7 +44,7 @@ void gui::MenuClassement::update()
             break;
 
             case 2:
-            GameState::set( GS_MENU_START );
+            GameState::set( Gamestate::MENU_START );
             break;
         }
         egn::Keyboard::setActive( "return", false );

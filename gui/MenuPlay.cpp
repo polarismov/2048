@@ -31,19 +31,19 @@ void gui::MenuPlay::update()
         switch (m_Cursor)
         {
             case 0:
-            GameState::set( GS_SET_4X4_PLAY );
+            GameState::set( Gamestate::SET_4X4_PLAY );
             break;
 
             case 1:
-            GameState::set( GS_SET_5X5_PLAY );
+            GameState::set( Gamestate::SET_5X5_PLAY );
             break;
 
             case 2:
-            GameState::set( GS_SET_6X6_PLAY );
+            GameState::set( Gamestate::SET_6X6_PLAY );
             break;
 
             case 3:
-            GameState::set( GS_MENU_START );
+            GameState::set( Gamestate::MENU_START );
             break;
         }
         egn::Keyboard::setActive( "return", false );

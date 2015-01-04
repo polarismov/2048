@@ -47,11 +47,11 @@ void gui::MenuWin::update()
             break;
 
             case 1:
-            GameState::set( GS_MENU_START );
+            GameState::set( Gamestate::MENU_START );
             break;
 
             case 2:
-            GameState::set( GS_EXIT );
+            GameState::set( Gamestate::EXIT );
             break;
         }
         egn::Keyboard::setActive( "return", false );
@@ -134,11 +134,11 @@ void gui::MenuWin::set( const std::string& var, int value )
 		m_Score = value;
         switch( GameState::previous() )
         {
-            case GS_SET_4X4_PLAY:
+            case Gamestate::SET_4X4_PLAY:
             m_Score *= 2;
             break;
 
-            case GS_SET_5X5_PLAY:
+            case Gamestate::SET_5X5_PLAY:
             float tmp = (float)m_Score;
             tmp *= 1.5;
             m_Score = (int)tmp;

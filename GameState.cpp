@@ -1,21 +1,21 @@
 #include "GameState.hpp"
 
-GS GameState::s_State;
-GS GameState::s_PreviousState;
+Gamestate GameState::s_State;
+Gamestate GameState::s_PreviousState;
 
-void GameState::set( GS state )
+void GameState::set( Gamestate state )
 {
-	if( s_State != GS_PLAY && s_State != GS_MENU_PAUSE && s_State != GS_SET_PSEUDO && s_State != GS_MENU_PSEUDO )
+	if( s_State != Gamestate::PLAY && s_State != Gamestate::MENU_PAUSE && s_State != Gamestate::SET_PSEUDO && s_State != Gamestate::MENU_PSEUDO )
 		s_PreviousState = s_State;
 	s_State = state;
 }
 
-GS GameState::get()
+Gamestate GameState::get()
 {
 	return s_State;
 }
 
-GS GameState::previous()
+Gamestate GameState::previous()
 {
 	return s_PreviousState;
 }

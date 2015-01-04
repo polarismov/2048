@@ -35,7 +35,7 @@ namespace grid
 		void popNumber( int n );
 
 		/* faire un déplacement sur la grille */
-		void move( DIR direction );
+		void move( Direction direction );
 
 		/* fonction de triche */
 		void cheat( int value );
@@ -45,14 +45,14 @@ namespace grid
 
 		/* retourne true si deux cases cote à cote ont la même valeur */
 		bool moveIsPossible();
-		bool moveIsPossible( DIR direction );
+		bool moveIsPossible( Direction direction );
 
 		grid::PlayerInfo& getPlayerInfo();
 
 	private:
 		egn::Sprite m_BlankScare;
 		
-		DIR m_Direction;
+		Direction m_Direction;
 
 		std::vector<std::vector<grid::Number> > m_Grid;
 		std::vector<grid::Number> m_MoveNumber;
