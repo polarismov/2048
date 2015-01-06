@@ -16,6 +16,7 @@
 #include "gui/MenuPause.hpp"
 #include "gui/MenuClassement.hpp"
 #include "gui/MenuPseudo.hpp"
+#include "gui/MenuContinue.hpp"
 
 #include "GameState.hpp"
 #include "DataManager.hpp"
@@ -72,7 +73,7 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuPause(), "menu_pause" );
     m_GuiMgr.add( new gui::MenuClassement(), "menu_classement" );
     m_GuiMgr.add( new gui::MenuPseudo(), "menu_pseudo");
-
+    m_GuiMgr.add( new gui::MenuContinue(), "menu_continue");
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();
@@ -185,6 +186,13 @@ void MainGame::loop()
             case Gamestate::UPDATE_CLASSEMENT:
             m_GuiMgr.set( "menu_classement", "sort", "" );
             GameState::set( Gamestate::MENU_CLASSEMENT );
+            break;
+
+            case Gamestate::MENU_CONTINUE:
+            m_GuiMgr.update( "menu_continue");
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_Grid.draw( m_Window );
+            m_GuiMgr.draw( "menu_continue", m_Window);
             break;
 
             case Gamestate::EXIT:
