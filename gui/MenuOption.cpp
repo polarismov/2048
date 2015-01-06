@@ -106,8 +106,8 @@ void gui::MenuOption::draw(egn::Window& window)
     std::ostringstream oss;
     oss << egn::AudioManager::get()->getVolumeSound();
     std::string valsound = "< "+oss.str()+" >";
-    egn::FontManager::get()->write(window, "shoes","Sound ",egn::Vector2f( 345-30, 158 ), 30, egn::Color::Black);
-    egn::FontManager::get()->write(window, "olympic", valsound, egn::Vector2f( 440, 158 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Sound ",egn::Vector2f( 345-30, 152 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "olympic", valsound, egn::Vector2f( 440, 152 ), 30, egn::Color::Black);
     /*end sound*/
 
     /*musique*/
@@ -124,8 +124,8 @@ void gui::MenuOption::draw(egn::Window& window)
     std::ostringstream oss1;
     oss1 << egn::AudioManager::get()->getVolumeMusic();
     std::string valmusic = "< "+oss1.str()+" >";
-    egn::FontManager::get()->write(window, "shoes","Music",egn::Vector2f( 345-30, 228 ), 30, egn::Color::Black);
-    egn::FontManager::get()->write(window, "olympic", valmusic,egn::Vector2f( 440, 228 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Music",egn::Vector2f( 345-30, 222 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "olympic", valmusic,egn::Vector2f( 440, 222 ), 30, egn::Color::Black);
 
     /*end musique*/
 
@@ -140,7 +140,7 @@ void gui::MenuOption::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f( 340, 298 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","Retour",egn::Vector2f( 340, 292 ), 30, egn::Color::Black);
   /*end retour*/
 
 }

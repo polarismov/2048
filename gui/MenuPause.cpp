@@ -75,7 +75,7 @@ void gui::MenuPause::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "Reprendre", egn::Vector2f( 310, 218 ), 30, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "Reprendre", egn::Vector2f( 310, 212 ), 30, egn::Color::Black );
 	/* fin reprendre */
 
 	/* recommencer */
@@ -89,7 +89,7 @@ void gui::MenuPause::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "Recommencer", egn::Vector2f( 285, 288 ), 30, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "Recommencer", egn::Vector2f( 285, 282 ), 30, egn::Color::Black );
 	/* fin recommencer */
 
 	/* menu principal */
@@ -103,7 +103,7 @@ void gui::MenuPause::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "Menu Principal", egn::Vector2f( 270, 358 ), 30, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "Menu Principal", egn::Vector2f( 270, 352 ), 30, egn::Color::Black );
 	/* fin menu principal */
 
 	/* quitter */
@@ -119,11 +119,11 @@ void gui::MenuPause::draw( egn::Window& window )
 	}
 	if( m_Continue ) 
 	{
-		egn::FontManager::get()->write( window, "shoes", "Quit save score", egn::Vector2f( 260, 428 ), 30, egn::Color::Black );
+		egn::FontManager::get()->write( window, "shoes", "Quit save score", egn::Vector2f( 260, 422 ), 30, egn::Color::Black );
 	}
 	else 
 	{
-		egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 330, 428 ), 30, egn::Color::Black );
+		egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 330, 422 ), 30, egn::Color::Black );
 	}
 	
 	/* fin quitter */

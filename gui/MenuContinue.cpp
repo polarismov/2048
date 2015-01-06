@@ -55,7 +55,7 @@ void gui::MenuContinue::update()
 void gui::MenuContinue::draw( egn::Window& window )
 {
 	window.drawRect( egn::FloatRect( 0, 0, 800, 600 ), egn::Color( 0, 0, 0, 180 ) );
-	egn::FontManager::get()->write( window, "shoes", "Continue", egn::Vector2f( 230, 60 ), 50, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "Continuer", egn::Vector2f( 255, 60 ), 50, egn::Color::Black );
 
 	/* oui menu play*/
 	m_Button[0].setPosition( egn::Vector2f( 250, 210 ) );
@@ -68,7 +68,7 @@ void gui::MenuContinue::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "oui", egn::Vector2f( 310, 218 ), 30, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "oui", egn::Vector2f( 365, 212 ), 30, egn::Color::Black );
 	/* fin oui */
 
 	/* non menu win*/
@@ -82,14 +82,15 @@ void gui::MenuContinue::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "non", egn::Vector2f( 285, 288 ), 30, egn::Color::Black );
+	egn::FontManager::get()->write( window, "shoes", "non", egn::Vector2f( 365, 282 ), 30, egn::Color::Black );
 	/* fin non */
+
 
 }
 
 void gui::MenuContinue::updateCursor( int value )
 {
 	m_Cursor += value;
-	if( m_Cursor < 0 ) m_Cursor = 2;
-	if( m_Cursor > 2 ) m_Cursor = 0;
+	if( m_Cursor < 0 ) m_Cursor = 1;
+	if( m_Cursor > 1 ) m_Cursor = 0;
 }

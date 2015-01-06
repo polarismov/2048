@@ -86,7 +86,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Recommencer",egn::Vector2f( 290, 308 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Recommencer",egn::Vector2f( 290, 302 ), 30, egn::Color::Black);
     /*fin recommencer*/
 
     /*debut retour*/
@@ -100,7 +100,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Menu Principal",egn::Vector2f( 270, 378 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Menu Principal",egn::Vector2f( 270, 372 ), 30, egn::Color::Black);
     /*fin retour*/
 
     /*debut Quitter*/
@@ -114,7 +114,7 @@ void gui::MenuWin::draw( egn::Window& window )
     {
     	window.draw( m_Button[0]);
     }
-    egn::FontManager::get()->write(window, "shoes", "Quitter",egn::Vector2f( 330, 448 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes", "Quitter",egn::Vector2f( 330, 442 ), 30, egn::Color::Black);
     /*fin quittter*/
 
 }

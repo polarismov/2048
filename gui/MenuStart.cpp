@@ -77,7 +77,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Jouer", egn::Vector2f( 345, 158 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Jouer", egn::Vector2f( 345, 152 ), 30, egn::Color::Black );
     /* end jouer */
 
     /* challenge */
@@ -91,7 +91,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 320, 228 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 320, 222 ), 30, egn::Color::Black );
     /* end challenge */
 
 
@@ -106,7 +106,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Classement", egn::Vector2f( 310, 298 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Classement", egn::Vector2f( 310, 292 ), 30, egn::Color::Black );
     /* end classement */
 
     /* Option */
@@ -120,7 +120,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Option", egn::Vector2f( 345, 368 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Option", egn::Vector2f( 345, 362 ), 30, egn::Color::Black );
     /* end option */
 
     /* quitter */
@@ -134,7 +134,7 @@ void gui::MenuStart::draw( egn::Window& window )
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 340, 438 ), 30, egn::Color::Black );
+    egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 340, 432 ), 30, egn::Color::Black );
     /* end quitter */
     
 }
