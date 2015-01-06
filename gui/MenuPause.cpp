@@ -119,7 +119,7 @@ void gui::MenuPause::draw( egn::Window& window )
 	}
 	if( m_Continue ) 
 	{
-		egn::FontManager::get()->write( window, "shoes", "Quitter et sauvegarder les points", egn::Vector2f( 260, 428 ), 30, egn::Color::Black );
+		egn::FontManager::get()->write( window, "shoes", "Quit save score", egn::Vector2f( 260, 428 ), 30, egn::Color::Black );
 	}
 	else 
 	{
@@ -136,7 +136,10 @@ void gui::MenuPause::set( const std::string& var, std::string value )
 
 void gui::MenuPause::set( const std::string& var, int value )
 {
-	//
+	if( var == "continue" ) 
+	{
+		m_Continue = value;
+	}
 }
 
 void gui::MenuPause::set( const std::string& var, bool value )

@@ -53,7 +53,7 @@ void gui::MenuPlay::draw(egn::Window& window)
 {
     
     egn::FontManager::get()->write(window, "shoes","Choix Partie",egn::Vector2f(600/2-40, 50 ), 50, egn::Color::Black);
-    /*facile*/
+    /*difficile*/
     m_Button[0].setPosition( egn::Vector2f( 250, 150 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 150 ) );
     if( m_Cursor == 0 )
@@ -64,8 +64,8 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","4X4 bonus x2",egn::Vector2f(280, 158 ), 30, egn::Color::Black);
-    /*end facile*/
+    egn::FontManager::get()->write(window, "shoes","4X4 bonus x3",egn::Vector2f(280, 158 ), 30, egn::Color::Black);
+    /*end difficile*/
 
     /*normal*/
     m_Button[0].setPosition( egn::Vector2f( 250, 220 ) );
@@ -78,10 +78,10 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","5X5 bonus x1,5",egn::Vector2f(280, 228 ), 30, egn::Color::Black);
+    egn::FontManager::get()->write(window, "shoes","5X5 bonus x2",egn::Vector2f(280, 228 ), 30, egn::Color::Black);
     /*end normal*/
 
-    /*extreme*/
+    /*facile*/
     m_Button[0].setPosition( egn::Vector2f( 250, 290 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 290 ) );
     if( m_Cursor == 2 )
@@ -92,8 +92,8 @@ void gui::MenuPlay::draw(egn::Window& window)
     {
         window.draw( m_Button[0] );
     }
-    egn::FontManager::get()->write(window, "shoes","6X6 bonus x0",egn::Vector2f(280, 298 ), 30, egn::Color::Black);
-    /*end extreme*/
+    egn::FontManager::get()->write(window, "shoes","6X6 bonus x1",egn::Vector2f(280, 298 ), 30, egn::Color::Black);
+    /*end facile*/
        
     /*retour*/
     m_Button[0].setPosition( egn::Vector2f( 250, 360 ) );

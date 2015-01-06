@@ -108,7 +108,6 @@ void MainGame::loop()
             m_Grid.setSize( 4 );
             m_Grid.popNumber( 2 );
             GameState::set( Gamestate::MENU_PSEUDO );
-            m_Grid.getPlayerInfo().initTime();
             break;
 
             case Gamestate::SET_5X5_PLAY:
@@ -116,7 +115,6 @@ void MainGame::loop()
             m_Grid.setSize( 5 );
             m_Grid.popNumber( 2 );
             GameState::set( Gamestate::MENU_PSEUDO  );
-            m_Grid.getPlayerInfo().initTime();
             break;
 
             case Gamestate::SET_6X6_PLAY:
@@ -124,7 +122,7 @@ void MainGame::loop()
             m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
             GameState::set( Gamestate::MENU_PSEUDO  );
-            m_Grid.getPlayerInfo().initTime();
+            
             break;
 
             case Gamestate::MENU_PSEUDO :
@@ -136,6 +134,7 @@ void MainGame::loop()
             case Gamestate::SET_PSEUDO:
             m_Grid.getPlayerInfo().setPseudo( m_GuiMgr.get_string( "menu_pseudo", "pseudo" ) );
             GameState::set( Gamestate::PLAY );
+            m_Grid.getPlayerInfo().initTime();
             break;
 
             case Gamestate::PLAY:

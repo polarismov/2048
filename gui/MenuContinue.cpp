@@ -47,8 +47,9 @@ void gui::MenuContinue::update()
 			GameState::set( Gamestate::MENU_WIN );
 			break;
 			
-			egn::Keyboard::setActive( "return", false );
 		}
+		
+		egn::Keyboard::setActive( "return", false );
 	}
 }
 void gui::MenuContinue::draw( egn::Window& window )
@@ -84,9 +85,9 @@ void gui::MenuContinue::draw( egn::Window& window )
 	egn::FontManager::get()->write( window, "shoes", "non", egn::Vector2f( 285, 288 ), 30, egn::Color::Black );
 	/* fin non */
 
-	}
+}
 
-	void gui::MenuContinue::updateCursor( int value )
+void gui::MenuContinue::updateCursor( int value )
 {
 	m_Cursor += value;
 	if( m_Cursor < 0 ) m_Cursor = 2;

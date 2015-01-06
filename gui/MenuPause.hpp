@@ -21,6 +21,7 @@ namespace gui
 
 		virtual void set( const std::string& var, std::string value );
 		virtual void set( const std::string& var, int value );
+		virtual void set( const std::string& var, bool value );
 	private:
 		void updateCursor( int value );
 	private:

@@ -135,12 +135,12 @@ void gui::MenuWin::set( const std::string& var, int value )
         switch( GameState::previous() )
         {
             case Gamestate::SET_4X4_PLAY:
-            m_Score *= 2;
+            m_Score *= 3;
             break;
 
             case Gamestate::SET_5X5_PLAY:
             float tmp = (float)m_Score;
-            tmp *= 1.5;
+            tmp *= 2;
             m_Score = (int)tmp;
             break;
         }

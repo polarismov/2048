@@ -253,7 +253,7 @@ void grid::Grid::update()
 
 	if( egn::Keyboard::isActive( "space" ) )
 	{
-		m_InMove = false;
+		cheat( 1024 );
 		egn::Keyboard::setActive( "space", false );
 	}
 
