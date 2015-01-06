@@ -33,6 +33,11 @@ void gui::GuiBase::set( const std::string& var, std::string value )
 	//set
 }
 
+void gui::GuiBase::set( const std::string& var, bool value )
+{
+	//set
+}
+
 std::string gui::GuiBase::get_string( const std::string& var )
 {
 	return "";

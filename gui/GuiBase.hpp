@@ -18,6 +18,7 @@ class GuiBase
         /* attribuer une valeur à une variable */
         virtual void set( const std::string& var, int value );
         virtual void set( const std::string& var, std::string value );
+        virtual void set( const std::string& var, bool value );
 
 
         /* récupérer la valeur d'une variable */

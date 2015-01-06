@@ -148,6 +148,7 @@ void MainGame::loop()
             break;
 
             case Gamestate::MENU_PAUSE:
+            m_GuiMgr.set( "menu_pause", "continue", m_Grid.getContinue() );
             m_GuiMgr.update( "menu_pause" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_Grid.draw( m_Window );

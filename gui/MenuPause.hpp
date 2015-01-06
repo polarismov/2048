@@ -27,6 +27,8 @@ namespace gui
 		egn::Sprite m_Button[2];
 
 		int m_Cursor;
+		
+		bool m_Continue;
 	};
 }
 

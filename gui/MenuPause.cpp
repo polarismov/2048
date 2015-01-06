@@ -11,6 +11,8 @@ gui::MenuPause::MenuPause()
 	m_Cursor = 0;
 	m_Button[0].setTexture( egn::TextureManager::get()->getTexture( "data/image/button1.png", egn::Color::White ) );
 	m_Button[1].setTexture( egn::TextureManager::get()->getTexture( "data/image/button2.png", egn::Color::White ) ); 
+	
+	m_Continue = false;
 }
 
 gui::MenuPause::~MenuPause()
@@ -48,7 +50,8 @@ void gui::MenuPause::update()
 			break;
 
 			case 3:
-			GameState::set( Gamestate::EXIT );
+			if( m_Continue ) GameState::set( Gamestate::MENU_WIN );
+			else GameState::set( Gamestate::EXIT );
 			break;
 		}
 
@@ -114,7 +117,15 @@ void gui::MenuPause::draw( egn::Window& window )
 	{
 		window.draw( m_Button[0] );
 	}
-	egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 330, 428 ), 30, egn::Color::Black );
+	if( m_Continue ) 
+	{
+		egn::FontManager::get()->write( window, "shoes", "Quitter et sauvegarder les points", egn::Vector2f( 260, 428 ), 30, egn::Color::Black );
+	}
+	else 
+	{
+		egn::FontManager::get()->write( window, "shoes", "Quitter", egn::Vector2f( 330, 428 ), 30, egn::Color::Black );
+	}
+	
 	/* fin quitter */
 }
 
@@ -126,6 +137,14 @@ void gui::MenuPause::set( const std::string& var, std::string value )
 void gui::MenuPause::set( const std::string& var, int value )
 {
 	//
+}
+
+void gui::MenuPause::set( const std::string& var, bool value )
+{
+	if( var == "continue" ) 
+	{
+		m_Continue = value;
+	}
 }
 
 void gui::MenuPause::updateCursor( int value )

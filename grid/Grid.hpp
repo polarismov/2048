@@ -46,6 +46,8 @@ namespace grid
 		/* retourne true si deux cases cote à cote ont la même valeur */
 		bool moveIsPossible();
 		bool moveIsPossible( Direction direction );
+		
+		bool getContinue();
 
 		grid::PlayerInfo& getPlayerInfo();
 
@@ -62,6 +64,8 @@ namespace grid
 		egn::Vector2f m_BasePosition;
 
 		bool m_InMove;
+		
+		bool m_Continue;
 
 		grid::PlayerInfo m_PlayerInfo;
 		

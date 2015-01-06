@@ -20,6 +20,8 @@ grid::Grid::~Grid()
 
 void grid::Grid::setSize( int size )
 {
+	m_Continue = false;
+	
 	m_Size = size;
 	m_Grid.clear();
 
@@ -287,9 +289,10 @@ void grid::Grid::update()
 		{
 			ref ref_tmp = m_MoveNumber[i].getRef();
 			m_Grid[ref_tmp.i][ref_tmp.j].setDraw( true );
-			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 )
+			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 && m_Continue == false )
 			{
-				GameState::set(Gamestate::MENU_WIN);
+				m_Continue = true;
+				GameState::set(Gamestate::MENU_CONTINUE);
 				m_InMove = false;
 			}
 		}
@@ -532,7 +535,15 @@ void grid::Grid::move( Direction direction )
 
 	if( isFull() && !moveIsPossible() )
 	{
-		GameState::set( Gamestate::MENU_LOSE );
+		if( m_Continue )
+		{
+			GameState::set( Gamestate::MENU_WIN );
+		}
+		else 
+		{
+			GameState::set( Gamestate::MENU_LOSE );
+		}
+		
 	}
 }
 
@@ -557,6 +568,11 @@ void grid::Grid::draw( egn::Window& window )
 	{
 		m_MoveNumber[i].draw( window );
 	}
+}
+
+bool grid::Grid::getContinue()
+{
+	return m_Continue;
 }
 
 grid::PlayerInfo& grid::Grid::getPlayerInfo()
