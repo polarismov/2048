@@ -8,6 +8,8 @@
 #include <map>
 #include <fstream>
 
+#include "Challenge.hpp"
+
 struct player 
 {
 	std::string pseudo;
@@ -32,6 +34,8 @@ public:
 	void basic_insert_result( std::string pseudo, int score, int time );
 	void basic_load_result();
 	std::vector<player> get_result();
+	
+	void basic_load_challenge_list();
 
 	/* insertion configuration non binaire */
 	void basic_insert_conf( std::string conf, int value );
@@ -40,6 +44,7 @@ public:
 private:
 	std::vector<player> m_Result;
 	std::map<std::string, int> m_Conf;
+	std::vector<Challenge> m_Challenges;
 };
 
 

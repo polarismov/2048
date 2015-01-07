@@ -51,6 +51,7 @@ MainGame::MainGame()
     /* CHARGEMENT */
     DataManager::get()->basic_load_conf();
     DataManager::get()->basic_load_result();
+    DataManager::get()->basic_load_challenge_list();
 
     egn::AudioManager::get()->setVolumeMusic( DataManager::get()->get_conf( "volume_music" ) );
     egn::AudioManager::get()->setVolumeSound( DataManager::get()->get_conf( "volume_sound" ) ); 
