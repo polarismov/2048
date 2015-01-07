@@ -36,6 +36,8 @@ public:
 	std::vector<player> get_result();
 	
 	void basic_load_challenge_list();
+	std::vector<Challenge> basic_get_challenge_list();
+	Challenge get_challenge( int index );
 
 	/* insertion configuration non binaire */
 	void basic_insert_conf( std::string conf, int value );

@@ -134,6 +134,11 @@ void DataManager::basic_load_challenge_list()
 	file.close();
 }
 
+std::vector<Challenge> DataManager::basic_get_challenge_list()
+{
+	return m_Challenges;
+}
+
 std::vector<player> DataManager::get_result()
 {
 	return m_Result;
