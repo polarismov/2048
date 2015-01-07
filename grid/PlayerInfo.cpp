@@ -3,6 +3,8 @@
 #include <iostream>
 #include <sstream>
 
+#include "../egn/Keyboard.hpp"
+
 grid::PlayerInfo::PlayerInfo()
 {
 	m_Score = 0;

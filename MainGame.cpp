@@ -9,6 +9,7 @@
 
 #include "gui/MenuStart.hpp"
 #include "gui/MenuPlay.hpp"
+#include "gui/MenuChallenge.hpp"
 #include "gui/MenuOption.hpp"
 #include "gui/MenuHud.hpp"
 #include "gui/MenuLose.hpp"
@@ -66,6 +67,7 @@ void MainGame::loop()
 {
     m_GuiMgr.add( new gui::MenuStart(), "menu_start" );
     m_GuiMgr.add( new gui::MenuPlay(), "menu_play" );
+    m_GuiMgr.add( new gui::MenuChallenge(), "menu_challenge" );
     m_GuiMgr.add( new gui::MenuOption(), "menu_option" );
     m_GuiMgr.add( new gui::MenuHud(), "menu_hud" );
     m_GuiMgr.add( new gui::MenuLose(), "menu_lose" );
@@ -153,6 +155,12 @@ void MainGame::loop()
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_Grid.draw( m_Window );
             m_GuiMgr.draw( "menu_pause", m_Window );
+            break;
+
+            case Gamestate::MENU_CHALLENGE:
+            m_GuiMgr.update( "menu_challenge" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_challenge", m_Window );
             break;
 
             case Gamestate::MENU_OPTION:

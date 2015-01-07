@@ -15,6 +15,7 @@ enum class Gamestate
 {
 	MENU_START,
 	MENU_PLAY,
+	MENU_CHALLENGE,
 	MENU_OPTION,
 	PLAY,
 	SET_4X4_PLAY,

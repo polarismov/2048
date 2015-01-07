@@ -43,6 +43,7 @@ void gui::MenuStart::update()
             break;
 
             case 1:
+            GameState::set( Gamestate::MENU_CHALLENGE );
             break;
 
             case 2: 
