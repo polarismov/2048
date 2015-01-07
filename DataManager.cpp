@@ -57,6 +57,83 @@ void DataManager::basic_load_result()
 	file.close();
 }
 
+void DataManager::basic_load_challenge_list()
+{
+	std::ifstream file( "data/challenge/list.dat" );
+
+	/* compter le nombre de lignes */
+	int count = 0;
+	while( true )
+	{
+		std::string buffer;
+		getline(file , buffer);
+		if( file.eof() ) break;
+		++count;
+	}
+
+	file.close();
+	
+	file.open( "data/challenge/list.dat" );
+	
+	for( int i = 0; i < count; i++ )
+	{
+		int id;
+		int type;
+		int score;
+		int ncoup;
+		int time;
+		std::string grid;
+		std::vector<std::vector<int> > numbers;
+		
+		file >> id;
+		file >> type;
+		file >> score;
+		file >> time;
+		file >> ncoup;
+		file >> grid;
+		
+		if( grid != "none" )
+		{
+			
+				std::ifstream file_grid( grid.c_str() );
+
+				int width;
+				int height;
+				
+				file_grid >> width;
+				file_grid >> height;
+				
+				for( int i = 0; i < height; i++ )
+				{
+					std::vector<int> tmp;
+					for( int j = 0; j < width; j++ )
+					{
+						int val;
+						file_grid >> val;
+						tmp.push_back( val );
+					}
+					
+					numbers.push_back( tmp );
+				}
+				
+				
+				file_grid.close();
+				
+				
+				
+		}
+		
+		
+		if( static_cast<ChallengeType>(type) == ChallengeType::SCORE_TIME )
+		{
+			Challenge challenge( id, static_cast<ChallengeType>(type), time, score );
+			m_Challenges.push_back( challenge );
+		}
+	}
+	
+	file.close();
+}
+
 std::vector<player> DataManager::get_result()
 {
 	return m_Result;

@@ -32,6 +32,11 @@ enum class Gamestate
 	EXIT
 };
 
+enum class ChallengeType
+{
+	SCORE_TIME = 1
+};
+
 
 struct ref
 {
