@@ -126,7 +126,7 @@ void DataManager::basic_load_challenge_list()
 		
 		if( static_cast<ChallengeType>(type) == ChallengeType::SCORE_TIME )
 		{
-			Challenge challenge( id, static_cast<ChallengeType>(type), time, score );
+			Challenge challenge( id, static_cast<ChallengeType>(type), score, time );
 			m_Challenges.push_back( challenge );
 		}
 	}

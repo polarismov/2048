@@ -39,6 +39,12 @@ void gui::MenuChallenge::update()
 	}
 	else if( egn::Keyboard::isActive( "return" ) )
 	{
+		switch (m_Cursor)
+        {
+        	case 0:
+        	GameState::set( Gamestate::MENU_START );
+        	break;
+        }
 		egn::Keyboard::setActive( "return", false );
 	}
 	
@@ -65,7 +71,7 @@ void gui::MenuChallenge::update()
 void gui::MenuChallenge::draw( egn::Window& window )
 {
 	int score = 0;
-	
+	int temps = 0;
 	window.drawRect( egn::FloatRect( 0, 0, 800, 600 ), egn::Color( 0, 0, 0, 180 ) );
 	egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 255, 60 ), 50, egn::Color::Black );
 	
@@ -75,19 +81,25 @@ void gui::MenuChallenge::draw( egn::Window& window )
 		
 		
 			Challenge challenge = DataManager::get()->basic_get_challenge_list().at(m_CursorH);
-
-
-
+			
 			switch( challenge.getType() )
 			{	
 				case ChallengeType::SCORE_TIME:
 				score = challenge.getScore();
+				std::ostringstream oss;
+    			oss << score;
+
+    			temps = challenge.getTime();
+    			std::ostringstream oss1;
+    			oss1 << temps;
+    	
+    			std::string var = "Le but de ce challenge est \n atteindre:  " + oss.str() +" points \n en moin de:  " + oss1.str() + " secondes.";
+
+    			egn::FontManager::get()->write(window, "shoes", var, egn::Vector2f( 150, 182 ), 30, egn::Color::Black);
 				break;
 
 			}
 	}
-
-
 
 
 	m_Button[0].setPosition( egn::Vector2f( 250, 430 ) );
