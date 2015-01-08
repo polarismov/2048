@@ -13,6 +13,7 @@
 gui::MenuChallenge::MenuChallenge()
 {
 	m_Cursor = 0;
+	m_CursorH = 0;
 	m_Button[0].setTexture( egn::TextureManager::get()->getTexture( "data/image/button1.png", egn::Color::White ) );
 	m_Button[1].setTexture( egn::TextureManager::get()->getTexture( "data/image/button2.png", egn::Color::White ) );
 
@@ -36,45 +37,58 @@ void gui::MenuChallenge::update()
 		updateCursor( 1 );
 		egn::Keyboard::setActive( "down", false );
 	}
+	else if( egn::Keyboard::isActive( "return" ) )
+	{
+		egn::Keyboard::setActive( "return", false );
+	}
+	
+	if( m_CursorH == 0 )
+	{
+		
+			if ( egn::Keyboard::isActive( "left") )
+			{
+				updateCursorHorizontal( -1 );
+				egn::Keyboard::setActive( "left", false );
+			}
+			else if ( egn::Keyboard::isActive( "right") )
+			{
+				updateCursorHorizontal( 1 );
+				egn::Keyboard::setActive( "right", false );
+			}
+	}
 
-	if ( egn::keyboard::isActive( "left") )
-	{
-		updateCursorHorizontale( -1 );
-		egn::keyboard::setActive( "left", false );
-	}
-	else if ( egn::keyboard::isActive( "right") )
-	{
-		updateCursorHorizontale( 1 );
-		egn::keyboard::setActive( "right", false );
-	}
+
 
 }
-Challenge challenge = DataManager::get()->basic_get_challenge_list().at(m_CursorH);
+
 
 void gui::MenuChallenge::draw( egn::Window& window )
 {
 	int score = 0;
-
-	Challenge challenge = DataManager::get()->basic_get_challenge_list().at(m_CursorH);
-
+	
 	window.drawRect( egn::FloatRect( 0, 0, 800, 600 ), egn::Color( 0, 0, 0, 180 ) );
 	egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 255, 60 ), 50, egn::Color::Black );
-
-	if ( egn::Keyboard::isActive("return"))
+	
+	
+	if( DataManager::get()->basic_get_challenge_list().size() > 0 )
 	{
+		
+		
+			Challenge challenge = DataManager::get()->basic_get_challenge_list().at(m_CursorH);
+
+
+
 			switch( challenge.getType() )
-		{	
-			case ChallengeType::SCORE_TIME:
-			score = challenge.getScore()
-			break;
+			{	
+				case ChallengeType::SCORE_TIME:
+				score = challenge.getScore();
+				break;
 
-			case 0:
-            GameState::set( Gamestate::MENU_START );
-            break;
-
-		}
-		egn::Keyboard::setActive( "return", false );
+			}
 	}
+
+
+
 
 	m_Button[0].setPosition( egn::Vector2f( 250, 430 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 430 ) );
@@ -88,6 +102,16 @@ void gui::MenuChallenge::draw( egn::Window& window )
     }
     egn::FontManager::get()->write( window, "shoes", "Retour", egn::Vector2f( 340, 432 ), 30, egn::Color::Black );
 
+}
+
+void gui::MenuChallenge::set( const std::string& var, int value)
+{
+	//set
+}
+
+void gui::MenuChallenge::set( const std::string& var, std::string value)
+{
+	//set
 }
 
 void gui::MenuChallenge::updateCursor( int value )

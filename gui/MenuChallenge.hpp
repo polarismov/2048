@@ -10,7 +10,7 @@
 namespace gui
 {
 	
-	class MenuChallenge : public GuiBase
+	class MenuChallenge : public gui::GuiBase
 	{
 		public:
 		MenuChallenge();
