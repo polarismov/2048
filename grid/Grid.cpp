@@ -309,6 +309,7 @@ void grid::Grid::update()
 		if( m_MoveNumber[i].inMove() == false )
 		{
 			m_MoveNumber.erase( m_MoveNumber.begin() + i );
+
 		}
 	}
 
@@ -378,6 +379,7 @@ void grid::Grid::move( Direction direction )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
+							egn::AudioManager::get()->playSound("data/audio/123.ogg");
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( Direction::UP, ref_tmp );
@@ -428,6 +430,7 @@ void grid::Grid::move( Direction direction )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
+							egn::AudioManager::get()->playSound("data/audio/123.ogg");
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( Direction::DOWN, ref_tmp );
@@ -478,6 +481,7 @@ void grid::Grid::move( Direction direction )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
+							egn::AudioManager::get()->playSound("data/audio/123.ogg");
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( Direction::LEFT, ref_tmp );
@@ -528,6 +532,7 @@ void grid::Grid::move( Direction direction )
 						{
 							m_Grid[ref_tmp.i][ref_tmp.j].set( m_Grid[i][j].get() * 2 );
 							m_PlayerInfo.setScore(m_PlayerInfo.getScore() + m_Grid[i][j].get()*2);
+							egn::AudioManager::get()->playSound("data/audio/123.ogg");
 						}
 						m_Grid[i][j].set( 0 );
 						number.move( Direction::RIGHT, ref_tmp );
