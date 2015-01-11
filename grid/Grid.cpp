@@ -289,7 +289,7 @@ void grid::Grid::update()
 		{
 			ref ref_tmp = m_MoveNumber[i].getRef();
 			m_Grid[ref_tmp.i][ref_tmp.j].setDraw( true );
-			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 && m_Continue == false )
+			if( m_Grid[ref_tmp.i][ref_tmp.j].get() == 2048 && m_Continue == false && !m_Challenge )
 			{
 				m_Continue = true;
 				GameState::set(Gamestate::MENU_CONTINUE);
@@ -535,13 +535,13 @@ void grid::Grid::move( Direction direction )
 
 	if( isFull() && !moveIsPossible() )
 	{
-		if( m_Continue )
+		if( m_Continue && !m_Challenge )
 		{
 			GameState::set( Gamestate::MENU_WIN );
 		}
 		else 
 		{
-			GameState::set( Gamestate::MENU_LOSE );
+			if( !m_Challenge ) GameState::set( Gamestate::MENU_LOSE );
 		}
 		
 	}
@@ -578,4 +578,14 @@ bool grid::Grid::getContinue()
 grid::PlayerInfo& grid::Grid::getPlayerInfo()
 {
 	return m_PlayerInfo;
+}
+
+bool grid::Grid::getChallenge()
+{
+	return m_Challenge;
+}
+
+void grid::Grid::setChallenge( bool challenge )
+{
+	m_Challenge = challenge;
 }

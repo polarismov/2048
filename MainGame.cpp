@@ -104,6 +104,7 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_play" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_play", m_Window );
+            m_Grid.setChallenge( false );
             break;
 
             case Gamestate::SET_4X4_PLAY:
@@ -125,7 +126,6 @@ void MainGame::loop()
             m_Grid.setSize( 6 );
             m_Grid.popNumber( 2 );
             GameState::set( Gamestate::MENU_PSEUDO  );
-            
             break;
 
             case Gamestate::MENU_PSEUDO :
@@ -136,7 +136,7 @@ void MainGame::loop()
 
             case Gamestate::SET_PSEUDO:
             m_Grid.getPlayerInfo().setPseudo( m_GuiMgr.get_string( "menu_pseudo", "pseudo" ) );
-            GameState::set( Gamestate::PLAY );
+            if( m_Grid.getChallenge() == false ) GameState::set( Gamestate::PLAY );
             m_Grid.getPlayerInfo().initTime();
             break;
 

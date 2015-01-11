@@ -47,6 +47,9 @@ namespace grid
 		bool moveIsPossible();
 		bool moveIsPossible( Direction direction );
 		
+		bool getChallenge();
+		void setChallenge( bool challenge );
+		
 		bool getContinue();
 
 		grid::PlayerInfo& getPlayerInfo();
@@ -68,6 +71,8 @@ namespace grid
 		bool m_Continue;
 
 		grid::PlayerInfo m_PlayerInfo;
+		
+		bool m_Challenge;
 		
 	};
 }

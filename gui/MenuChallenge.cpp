@@ -41,7 +41,7 @@ void gui::MenuChallenge::update()
 	{
 		switch (m_Cursor)
         {
-        	case 0:
+        	case 2:
         	GameState::set( Gamestate::MENU_START );
         	break;
         }
@@ -72,8 +72,19 @@ void gui::MenuChallenge::draw( egn::Window& window )
 {
 	int score = 0;
 	int temps = 0;
-	window.drawRect( egn::FloatRect( 0, 0, 800, 600 ), egn::Color( 0, 0, 0, 180 ) );
 	egn::FontManager::get()->write( window, "shoes", "Challenge", egn::Vector2f( 255, 60 ), 50, egn::Color::Black );
+	
+	
+	if( m_Cursor == 0 )
+	{
+		egn::FontManager::get()->write(window, "olympic", "<", egn::Vector2f( 20, 180 ), 64, egn::Color::Yellow);
+		egn::FontManager::get()->write(window, "olympic", ">", egn::Vector2f( 740, 180 ), 64, egn::Color::Yellow);
+	}
+	else 
+	{
+		egn::FontManager::get()->write(window, "olympic", "<", egn::Vector2f( 20, 180 ), 64, egn::Color::Black);
+		egn::FontManager::get()->write(window, "olympic", ">", egn::Vector2f( 740, 180 ), 64, egn::Color::Black);
+	}
 	
 	
 	if( DataManager::get()->basic_get_challenge_list().size() > 0 )
@@ -93,18 +104,30 @@ void gui::MenuChallenge::draw( egn::Window& window )
     			std::ostringstream oss1;
     			oss1 << temps;
     	
-    			std::string var = "Le but de ce challenge est \n atteindre:  " + oss.str() +" points \n en moin de:  " + oss1.str() + " secondes.";
+    			std::string var = "Le but de ce challenge est \n d'atteindre " + oss.str() +" points \n en moins de " + oss1.str() + " secondes.";
 
-    			egn::FontManager::get()->write(window, "shoes", var, egn::Vector2f( 150, 182 ), 30, egn::Color::Black);
+    			egn::FontManager::get()->write(window, "shoes", var, egn::Vector2f( 170, 182 ), 30, egn::Color::Black);
 				break;
 
 			}
 	}
+	
+	m_Button[0].setPosition( egn::Vector2f( 250, 380 ) );
+    m_Button[1].setPosition( egn::Vector2f( 250, 380 ) );
+    if( m_Cursor == 1 )
+    {
+        window.draw( m_Button[1] );
+    }
+    else 
+    {
+        window.draw( m_Button[0] );
+    }
+    egn::FontManager::get()->write( window, "shoes", "Valider", egn::Vector2f( 330, 382 ), 30, egn::Color::Black );
 
 
 	m_Button[0].setPosition( egn::Vector2f( 250, 430 ) );
     m_Button[1].setPosition( egn::Vector2f( 250, 430 ) );
-    if( m_Cursor == 0 )
+    if( m_Cursor == 2 )
     {
         window.draw( m_Button[1] );
     }
@@ -129,8 +152,8 @@ void gui::MenuChallenge::set( const std::string& var, std::string value)
 void gui::MenuChallenge::updateCursor( int value )
 {
 	m_Cursor += value;
-	if( m_Cursor < 0 ) m_Cursor = 1;
-	if( m_Cursor > 1 ) m_Cursor = 0;
+	if( m_Cursor < 0 ) m_Cursor = 2;
+	if( m_Cursor > 2 ) m_Cursor = 0;
 }
 
 void gui::MenuChallenge::updateCursorHorizontal( int value )
