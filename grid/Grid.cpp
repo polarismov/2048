@@ -261,26 +261,30 @@ void grid::Grid::update()
 
 	if( m_InMove == false )
 	{
-		egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
+		
 		if( egn::Keyboard::isActive("up") )
 		{
 			move(Direction::UP);
 			egn::Keyboard::setActive("up",false);
+			egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
 		}
 		else if( egn::Keyboard::isActive("down") )
 		{
 			move(Direction::DOWN);
 			egn::Keyboard::setActive("down",false);
+			egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
 		}
 		else if( egn::Keyboard::isActive("left") )
 		{
 			move(Direction::LEFT);
 			egn::Keyboard::setActive("left",false);
+			egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
 		}
 		else if( egn::Keyboard::isActive("right") )
 		{
 			move(Direction::RIGHT);
 			egn::Keyboard::setActive("right",false);
+			egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
 		}
 	}
 
