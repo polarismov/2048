@@ -3,6 +3,7 @@
 #include "../egn/GameTime.hpp"
 #include "../egn/Keyboard.hpp"
 #include "../egn/FontManager.hpp"
+#include "../egn/AudioManager.hpp"
 
 #include "../GameState.hpp"
 
@@ -260,6 +261,7 @@ void grid::Grid::update()
 
 	if( m_InMove == false )
 	{
+		egn::AudioManager::get()->playSound("data/audio/theme1.ogg");
 		if( egn::Keyboard::isActive("up") )
 		{
 			move(Direction::UP);
