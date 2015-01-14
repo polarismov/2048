@@ -41,6 +41,11 @@ void gui::MenuChallenge::update()
 	{
 		switch (m_Cursor)
         {
+			
+			case 1:
+			if( DataManager::get()->basic_get_challenge_list().size() > 0 ) GameState::set( Gamestate::SET_CHALLENGE );
+			break;
+			
         	case 2:
         	GameState::set( Gamestate::MENU_START );
         	break;
@@ -48,7 +53,7 @@ void gui::MenuChallenge::update()
 		egn::Keyboard::setActive( "return", false );
 	}
 	
-	if( m_CursorH == 0 )
+	if( m_Cursor == 0 )
 	{
 		
 			if ( egn::Keyboard::isActive( "left") )
@@ -147,6 +152,16 @@ void gui::MenuChallenge::set( const std::string& var, int value)
 void gui::MenuChallenge::set( const std::string& var, std::string value)
 {
 	//set
+}
+
+int gui::MenuChallenge::get_int( const std::string& var )
+{
+	if( var == "cursorh" )
+	{
+		return m_CursorH;
+	}
+	
+	return 0;
 }
 
 void gui::MenuChallenge::updateCursor( int value )

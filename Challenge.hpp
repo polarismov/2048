@@ -2,6 +2,10 @@
 #define CHALLENGE_HPP
 
 
+#include <iostream>
+#include <vector>
+
+
 #include "Common.hpp"
 
 
@@ -21,6 +25,8 @@ class Challenge
 	
 	ChallengeType getType();
 	
+	std::vector<std::vector<int> > getNumbers();
+	
 	private:
 	
 	int m_Id;
@@ -30,6 +36,8 @@ class Challenge
 	int m_Score;
 	
 	int m_Time;
+	
+	std::vector<std::vector<int> > m_Numbers;
 	
 	
 };

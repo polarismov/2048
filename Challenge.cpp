@@ -27,3 +27,5 @@ int Challenge::getScore() { return m_Score; }
 int Challenge::getTime() { return m_Time; }
 	
 ChallengeType Challenge::getType() { return m_Type; }
+
+std::vector<std::vector<int> > Challenge::getNumbers() { return m_Numbers; }

@@ -49,6 +49,8 @@ namespace grid
 		
 		bool getChallenge();
 		void setChallenge( bool challenge );
+		void winChallenge();
+		void loseChallenge();
 		
 		bool getContinue();
 

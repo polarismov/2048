@@ -553,6 +553,7 @@ void grid::Grid::move( Direction direction )
 		else 
 		{
 			if( !m_Challenge ) GameState::set( Gamestate::MENU_LOSE );
+			else loseChallenge();
 		}
 		
 	}
@@ -599,4 +600,16 @@ bool grid::Grid::getChallenge()
 void grid::Grid::setChallenge( bool challenge )
 {
 	m_Challenge = challenge;
+}
+
+void grid::Grid::winChallenge()
+{
+	m_Continue = true;	
+	GameState::set(Gamestate::MENU_WIN_CHALLENGE);
+	m_InMove = false;
+}
+
+void grid::Grid::loseChallenge()
+{
+	GameState::set(Gamestate::MENU_LOSE_CHALLENGE);
 }

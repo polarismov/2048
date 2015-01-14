@@ -18,6 +18,8 @@
 #include "gui/MenuClassement.hpp"
 #include "gui/MenuPseudo.hpp"
 #include "gui/MenuContinue.hpp"
+#include "gui/ChallengeWin.hpp"
+#include "gui/ChallengeLose.hpp"
 
 #include "GameState.hpp"
 #include "DataManager.hpp"
@@ -77,6 +79,9 @@ void MainGame::loop()
     m_GuiMgr.add( new gui::MenuClassement(), "menu_classement" );
     m_GuiMgr.add( new gui::MenuPseudo(), "menu_pseudo");
     m_GuiMgr.add( new gui::MenuContinue(), "menu_continue");
+    m_GuiMgr.add( new gui::ChallengeWin(), "menu_challenge_win" );
+    m_GuiMgr.add( new gui::ChallengeLose(), "menu_challenge_lose" );
+    
     while( m_Window.isOpen() )
     {
         egn::GameTime::refresh();
@@ -137,7 +142,40 @@ void MainGame::loop()
             case Gamestate::SET_PSEUDO:
             m_Grid.getPlayerInfo().setPseudo( m_GuiMgr.get_string( "menu_pseudo", "pseudo" ) );
             if( m_Grid.getChallenge() == false ) GameState::set( Gamestate::PLAY );
+            else GameState::set( Gamestate::PLAY_CHALLENGE );
             m_Grid.getPlayerInfo().initTime();
+            break;
+            
+            case Gamestate::SET_CHALLENGE:
+            m_Grid.getPlayerInfo().setScore( 0 );
+            if( DataManager::get()->get_challenge( m_GuiMgr.get_int( "menu_challenge", "cursorh" ) ).getNumbers().size() > 0 ) m_Grid.setSize( 4 );
+            else m_Grid.setSize( 4 );
+            m_Grid.popNumber( 2 );
+            m_Grid.setChallenge( true );
+            GameState::set( Gamestate::MENU_PSEUDO );
+            break;
+            
+            case Gamestate::PLAY_CHALLENGE:
+            switch( DataManager::get()->get_challenge( m_GuiMgr.get_int( "menu_challenge", "cursorh" ) ).getType() )
+            {
+				case ChallengeType::SCORE_TIME:
+				if( m_Grid.getPlayerInfo().getTime() >= DataManager::get()->get_challenge( m_GuiMgr.get_int( "menu_challenge", "cursorh" ) ).getTime() )
+				{
+					m_Grid.loseChallenge();
+				} 
+				else if( m_Grid.getPlayerInfo().getScore() >= DataManager::get()->get_challenge( m_GuiMgr.get_int( "menu_challenge", "cursorh" ) ).getScore()  )
+				{
+					m_Grid.winChallenge();
+				}
+				break;
+			}
+            m_Grid.update();
+            m_GuiMgr.set( "menu_hud", "score", m_Grid.getPlayerInfo().getScore() );
+            m_GuiMgr.set( "menu_hud", "time", m_Grid.getPlayerInfo().getTime() );
+            m_GuiMgr.update("menu_hud");
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_Grid.draw( m_Window );
+            m_GuiMgr.draw( "menu_hud", m_Window );
             break;
 
             case Gamestate::PLAY:
@@ -162,6 +200,18 @@ void MainGame::loop()
             m_GuiMgr.update( "menu_challenge" );
             m_Window.clear( egn::Color( 250, 250, 250 ) );
             m_GuiMgr.draw( "menu_challenge", m_Window );
+            break;
+            
+            case Gamestate::MENU_LOSE_CHALLENGE:
+            m_GuiMgr.update( "menu_challenge_lose" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_challenge_lose", m_Window );
+            break;
+            
+            case Gamestate::MENU_WIN_CHALLENGE:
+            m_GuiMgr.update( "menu_challenge_win" );
+            m_Window.clear( egn::Color( 250, 250, 250 ) );
+            m_GuiMgr.draw( "menu_challenge_win", m_Window );
             break;
 
             case Gamestate::MENU_OPTION:

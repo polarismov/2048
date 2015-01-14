@@ -139,6 +139,11 @@ std::vector<Challenge> DataManager::basic_get_challenge_list()
 	return m_Challenges;
 }
 
+Challenge DataManager::get_challenge( int index )
+{
+	return m_Challenges[index];
+}
+
 std::vector<player> DataManager::get_result()
 {
 	return m_Result;
