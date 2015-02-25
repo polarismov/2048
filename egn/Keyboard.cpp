@@ -96,6 +96,14 @@ void egn::Keyboard::listenEvent( egn::Event& event )
     }
 }
 
+void egn::Keyboard::listenMinimalEvent( egn::Event& event )
+{
+    if( event.type == sf::Event::Closed )
+    {
+        s_Keys["quit"] = true;
+    }
+}
+
 std::string egn::Keyboard::keyToStr( sf::Keyboard::Key key )
 {
     std::string key_str = "";

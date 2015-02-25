@@ -21,6 +21,10 @@ void egn::AnimationManager::add( const std::string& frame, egn::Animation animat
 
 void egn::AnimationManager::setAnimation( const std::string& frame )
 {
+	if( m_CurrentFrame != "" && m_CurrentFrame != frame ) 
+	{
+		m_Animations[m_CurrentFrame].setCurrentFrame( 0 );
+	}
     m_CurrentFrame = frame;
 }
 

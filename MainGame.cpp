@@ -32,7 +32,6 @@ MainGame::MainGame()
 {
     egn::LogManager::get()->set( "data/log/log.dat" );
     m_Window.create( 800, 600, "2048" );
-    m_Window.setFramerate( 60 );
 
     egn::Keyboard::init();
     egn::TextureManager::init();

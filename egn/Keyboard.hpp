@@ -18,6 +18,7 @@ public:
     static void setActive( const std::string& key_str, bool value );
 
     static void listenEvent( egn::Event& event );
+    static void listenMinimalEvent( egn::Event& event );
 protected:
 private:
     static std::string keyToStr( sf::Keyboard::Key key );
